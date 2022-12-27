@@ -9,6 +9,7 @@ namespace KlimaOppgave.DAL
         {
         }
 
-        public DbSet<Sporsmal> Sporsmal { get; set; }
+        public DbSet<Innlegg> Innlegg { get; set; }
+        public DbSet<Svar> Svar { get; set; }
     }
 }
