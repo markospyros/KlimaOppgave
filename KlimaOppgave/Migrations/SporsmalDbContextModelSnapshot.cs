@@ -26,6 +26,12 @@ namespace KlimaOppgave.Migrations
                     b.Property<string>("Innhold")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("TimeStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tittel")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("InnleggId");
 
                     b.ToTable("Innlegg");

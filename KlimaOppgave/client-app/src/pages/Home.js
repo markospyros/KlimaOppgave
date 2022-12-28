@@ -11,6 +11,27 @@ const Home = () => {
     axios.get("/hentinnlegg").then((response) => setPosts(response.data));
   }, []);
 
+  //This renders all answers
+  posts.map((post) => {
+    return console.log(post.svar);
+  });
+
+  const sortBasedOnTime = () => {
+    for (let i = 0; i < posts.length - 1; i++) {
+      if (posts[i].timeStamp < posts[i + 1].timeStamp) {
+        const tmp = posts[i];
+        posts[i] = posts[i + 1];
+        posts[i + 1] = tmp;
+
+        i = -1;
+      }
+    }
+
+    return posts;
+  };
+
+  sortBasedOnTime();
+
   const formatPosts = posts.map((post) => {
     return (
       <div
@@ -18,7 +39,11 @@ const Home = () => {
         className="card text-bg-light mb-3"
         style={{ maxWidth: "30rem" }}
       >
-        <PostComponent innhold={post.innhold} dato={post.dato} />
+        <PostComponent
+          tittel={post.tittel}
+          innhold={post.innhold}
+          dato={post.dato}
+        />
         <div>
           {post.svar.map((svar) => (
             <div key={svar.svarId}>
