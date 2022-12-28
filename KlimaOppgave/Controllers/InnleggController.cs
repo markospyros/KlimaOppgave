@@ -63,5 +63,6 @@ namespace KlimaOppgave.Controllers
                 .Include(x => x.Innlegg)
                 .ToListAsync();
         }
+        //
     }
 }
