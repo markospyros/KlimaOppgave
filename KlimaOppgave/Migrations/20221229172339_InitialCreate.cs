@@ -25,10 +25,10 @@ namespace KlimaOppgave.Migrations
                 name: "Svar",
                 columns: table => new
                 {
-                    SvarId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    SvarId = table.Column<string>(nullable: false),
                     Innhold = table.Column<string>(nullable: true),
                     Dato = table.Column<string>(nullable: true),
+                    TimeStamp = table.Column<string>(nullable: true),
                     InnleggId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

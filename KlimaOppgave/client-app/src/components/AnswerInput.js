@@ -14,9 +14,11 @@ const AnswerInput = (props) => {
       innleggId: props.innleggId,
     };
 
-    console.log(svar);
-
-    axios.post("/leggsvar", svar);
+    axios.post("/leggsvar", svar).then((response) => {
+      svar.svarId = response.data.svarId;
+      svar.dato = response.data.dato;
+      props.addAnswer(svar, svar.innleggId);
+    });
 
     setSvarText("");
 

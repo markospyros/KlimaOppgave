@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KlimaOppgave.Migrations
 {
     [DbContext(typeof(SporsmalDbContext))]
-    [Migration("20221228194242_InitialCreate")]
+    [Migration("20221229172339_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,9 +41,8 @@ namespace KlimaOppgave.Migrations
 
             modelBuilder.Entity("KlimaOppgave.Models.Svar", b =>
                 {
-                    b.Property<int>("SvarId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SvarId")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
@@ -52,6 +51,9 @@ namespace KlimaOppgave.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("InnleggId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeStamp")
                         .HasColumnType("TEXT");
 
                     b.HasKey("SvarId");

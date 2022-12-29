@@ -11,11 +11,6 @@ const Home = () => {
     axios.get("/hentinnlegg").then((response) => setPosts(response.data));
   }, []);
 
-  //This renders all answers
-  posts.map((post) => {
-    return console.log(post.svar);
-  });
-
   const sortBasedOnTime = () => {
     for (let i = 0; i < posts.length - 1; i++) {
       if (posts[i].timeStamp < posts[i + 1].timeStamp) {
@@ -31,6 +26,16 @@ const Home = () => {
   };
 
   sortBasedOnTime();
+
+  const addAnswer = (newAnswer, postId) => {
+    const updatedPosts = posts.map((post) => {
+      if (post.innleggId === postId) {
+        post.svar.push(newAnswer);
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+  };
 
   const formatPosts = posts.map((post) => {
     return (
@@ -55,7 +60,7 @@ const Home = () => {
           ))}
         </div>
         <div>
-          <AnswerInput innleggId={post.innleggId} />
+          <AnswerInput innleggId={post.innleggId} addAnswer={addAnswer} />
         </div>
       </div>
     );

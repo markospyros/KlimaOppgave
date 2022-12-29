@@ -10,4 +10,3 @@ const AnswerComponent = (props) => {
 };
 
 export default AnswerComponent;
-//

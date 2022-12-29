@@ -6,6 +6,7 @@ import Form from "../components/Form";
 const AskQuestion = () => {
   const [tittel, setTittel] = useState("");
   const [innhold, setInnhold] = useState("");
+  const [buttonStatus, setButtonStatus] = useState("Send inn");
 
   const onChangeTittel = (event) => {
     setTittel(event.target.value);
@@ -17,14 +18,23 @@ const AskQuestion = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (event) => {
+  const onSubmit = () => {
     const sporsmal = { tittel: tittel, innhold: innhold };
 
     axios.post("/legginnlegg", sporsmal);
 
-    event.preventDefault();
+    setButtonStatus(
+      <div
+        className="spinner-border spinner-border-sm text-light"
+        role="status"
+      >
+        <span className="visually-hidden"></span>
+      </div>
+    );
 
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
   return (
@@ -36,7 +46,7 @@ const AskQuestion = () => {
         valueTittel={tittel}
         valueInnhold={innhold}
         onSubmit={onSubmit}
-        buttonTitle="Send inn"
+        buttonTitle={buttonStatus}
       />
     </div>
   );

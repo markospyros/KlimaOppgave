@@ -39,9 +39,8 @@ namespace KlimaOppgave.Migrations
 
             modelBuilder.Entity("KlimaOppgave.Models.Svar", b =>
                 {
-                    b.Property<int>("SvarId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SvarId")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
@@ -50,6 +49,9 @@ namespace KlimaOppgave.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("InnleggId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeStamp")
                         .HasColumnType("TEXT");
 
                     b.HasKey("SvarId");
