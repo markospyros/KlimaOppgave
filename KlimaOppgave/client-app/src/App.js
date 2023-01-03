@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AskQuestion from "./pages/AskQuestion";
+import EditQuestion from "./pages/EditQuestion";
 import Home from "./pages/Home";
 import SharedLayout from "./pages/SharedLayout";
 
@@ -11,6 +12,7 @@ const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="askquestion" element={<AskQuestion />} />
+          <Route path="edit/:id" element={<EditQuestion />} />
         </Route>
       </Routes>
     </BrowserRouter>

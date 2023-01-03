@@ -37,6 +37,20 @@ const Home = () => {
     setPosts(updatedPosts);
   };
 
+  const deleteAnswer = (id) => {
+    const updatedPosts = posts.map((post) => {
+      post.svar = post.svar.filter((svar) => svar.svarId !== id);
+      return post;
+    });
+    setPosts(updatedPosts);
+  };
+
+  const deletePost = (id) => {
+    const updatedPosts = posts.filter((post) => post.innleggId !== id);
+
+    setPosts(updatedPosts);
+  };
+
   const formatPosts = posts.map((post) => {
     return (
       <div
@@ -45,16 +59,20 @@ const Home = () => {
         style={{ maxWidth: "30rem" }}
       >
         <PostComponent
+          id={post.innleggId}
           tittel={post.tittel}
           innhold={post.innhold}
           dato={post.dato}
+          deletePost={deletePost}
         />
         <div>
           {post.svar.map((svar) => (
             <div key={svar.svarId}>
               <AnswerComponent
+                svarId={svar.svarId}
                 svarInnhold={svar.innhold}
                 svarDato={svar.dato}
+                deleteAnswer={deleteAnswer}
               />
             </div>
           ))}

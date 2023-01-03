@@ -1,12 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Form from "../components/Form";
 
-const AskQuestion = () => {
-  const [tittel, setTittel] = useState("");
-  const [innhold, setInnhold] = useState("");
-  const [buttonStatus, setButtonStatus] = useState("Send inn");
+const EditQuestion = () => {
+  let { id } = useParams();
+
+  const [post, setPost] = useState();
+  const [tittel, setTittel] = useState();
+  const [innhold, setInnhold] = useState();
+  const [buttonStatus, setButtonStatus] = useState("Endre");
   const [tittelInputState, setTittelInputState] = useState("border-secondary");
   const [innholdInputState, setInnholdInputState] =
     useState("border-secondary");
@@ -14,6 +17,14 @@ const AskQuestion = () => {
     useState("none");
   const [innholdErrorMessageStatus, setInnholdErrorMessageStatus] =
     useState("none");
+
+  useEffect(() => {
+    axios.get(`/henteninnlegg/${id}`).then((res) => {
+      setPost(res.data);
+      setTittel(res.data.tittel);
+      setInnhold(res.data.innhold);
+    });
+  }, [id]);
 
   const onFocusTittel = () => {
     setTittelInputState("border-primary");
@@ -61,12 +72,15 @@ const AskQuestion = () => {
     const innholdWithoutSpace = innhold.trim();
 
     if (tittelWithoutSpace.length !== 0 && innholdWithoutSpace.length !== 0) {
-      const sporsmal = {
+      const endretInnlegg = {
+        innleggId: id,
+        dato: post.dato,
+        timeStamp: post.timeStamp,
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
       };
 
-      axios.post("/legginnlegg", sporsmal);
+      axios.post("/endreinnlegg", endretInnlegg);
 
       setButtonStatus(
         <div
@@ -97,25 +111,27 @@ const AskQuestion = () => {
 
   return (
     <div>
-      <Form
-        pageTitle="Still et spørsmål"
-        onChangeTittel={onChangeTittel}
-        onChangeInnhold={onChangeInnhold}
-        valueTittel={tittel}
-        valueInnhold={innhold}
-        tittelInputState={tittelInputState}
-        tittelErrorMessageStatus={tittelErrorMessageStatus}
-        innholdInputState={innholdInputState}
-        innholdErrorMessageStatus={innholdErrorMessageStatus}
-        onFocusTittel={onFocusTittel}
-        onBlurTittel={onBlurTittel}
-        onFocusInnhold={onFocusInnhold}
-        onBlurInnhold={onBlurInnhold}
-        onSubmit={onSubmit}
-        buttonTitle={buttonStatus}
-      />
+      {post && (
+        <Form
+          pageTitle="Rediger innlegg"
+          onChangeTittel={onChangeTittel}
+          onChangeInnhold={onChangeInnhold}
+          valueTittel={tittel}
+          valueInnhold={innhold}
+          tittelInputState={tittelInputState}
+          tittelErrorMessageStatus={tittelErrorMessageStatus}
+          innholdInputState={innholdInputState}
+          innholdErrorMessageStatus={innholdErrorMessageStatus}
+          onFocusTittel={onFocusTittel}
+          onBlurTittel={onBlurTittel}
+          onFocusInnhold={onFocusInnhold}
+          onBlurInnhold={onBlurInnhold}
+          onSubmit={onSubmit}
+          buttonTitle={buttonStatus}
+        />
+      )}
     </div>
   );
 };
 
-export default AskQuestion;
+export default EditQuestion;

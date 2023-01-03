@@ -3,6 +3,7 @@ using KlimaOppgave.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KlimaOppgave.Controllers
@@ -45,6 +46,31 @@ namespace KlimaOppgave.Controllers
             return Ok(innlegg);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> SlettInnlegg(string id)
+        {
+            var innlegg = await _db.Innlegg
+                .Include(x => x.Svar)
+                .FirstOrDefaultAsync(x => x.InnleggId == id);
+            
+            var svar = _db.Svar.Where(x => x.InnleggId == id);
+
+            _db.Innlegg.Remove(innlegg);
+            _db.Svar.RemoveRange(svar);
+
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Innlegg>> EndreInnlegg([FromBody] Innlegg innlegg)
+        {
+            _db.Innlegg.Update(innlegg);
+            await _db.SaveChangesAsync();
+
+            return Ok();
+        }
 
         [HttpPost]
         public async Task<ActionResult<Svar>> LeggSvar([FromBody] Svar svar)
@@ -62,6 +88,16 @@ namespace KlimaOppgave.Controllers
             return await _db.Svar
                 .Include(x => x.Innlegg)
                 .ToListAsync();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> SlettSvar(string id)
+        {
+            var svar = await _db.Svar.FindAsync(id);
+            _db.Svar.Remove(svar);
+            await _db.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }
