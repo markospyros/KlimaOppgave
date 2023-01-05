@@ -45,7 +45,8 @@ namespace KlimaOppgave.Controllers
             {
                 _log.LogInformation("hei");
                 return await _db.Innlegg
-                    .Include(x => x.Svar)
+                    .Include(x => x.Bruker)
+                    .Include(y => y.Svar)
                     .ToListAsync();
             }
             catch (Exception e)
@@ -60,7 +61,8 @@ namespace KlimaOppgave.Controllers
             try
             {
                 var innlegg = await _db.Innlegg
-                    .Include(x => x.Svar)
+                    .Include(x => x.Bruker)
+                    .Include(y => y.Svar)
                     .FirstOrDefaultAsync(x => x.InnleggId == id);
 
                 return Ok(innlegg);
@@ -121,6 +123,7 @@ namespace KlimaOppgave.Controllers
             {
                 return await _db.Svar
                     .Include(x => x.Innlegg)
+                    .Include(y => y.Bruker)
                     .ToListAsync();
             }
             catch (Exception e)

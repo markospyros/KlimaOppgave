@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AskQuestion from "./pages/AskQuestion";
 import EditQuestion from "./pages/EditQuestion";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import Register from "./pages/Register";
 import SharedLayout from "./pages/SharedLayout";
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="askquestion" element={<AskQuestion />} />
-          <Route path="edit/:id" element={<EditQuestion />} />
+        <Route path="login" element={<Login setUser={setUser}></Login>} />
+        <Route
+          path="register"
+          element={<Register setUser={setUser}></Register>}
+        />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute user={user}>
+              <SharedLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Home user={user} />} />
+          <Route path="askquestion" element={<AskQuestion user={user} />} />
+          <Route path="edit/:id" element={<EditQuestion user={user} />} />
         </Route>
       </Routes>
     </BrowserRouter>

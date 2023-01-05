@@ -1,0 +1,54 @@
+2023-01-03T12:45:33.3441891+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-03T12:45:33.3657829+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-03T12:45:33.3688494+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-03T12:45:38.2350032+01:00  [ERR] (node:42092) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (3a317e09)
+2023-01-03T12:45:38.2379129+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:42092) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (56daad7a)
+2023-01-03T12:45:45.0928741+01:00 40001bd5-0000-f500-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T12:45:45.9813802+01:00 40000884-0002-ff00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T12:47:09.3835096+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-03T12:47:09.3952890+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-03T12:47:09.3975726+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-03T12:47:13.6181675+01:00  [ERR] (node:9488) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (870947de)
+2023-01-03T12:47:13.6213130+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:9488) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (9d3ca4f3)
+2023-01-03T12:47:19.1745692+01:00 40000887-0002-ff00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T12:47:19.9573666+01:00 400081c5-0000-fb00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T14:19:58.9075429+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-03T14:19:58.9159521+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-03T14:19:58.9179594+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-03T14:20:04.1289736+01:00  [ERR] (node:38548) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (017328b2)
+2023-01-03T14:20:04.1317934+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:38548) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (ea25a281)
+2023-01-03T14:20:09.7871694+01:00 40000895-0002-ff00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T14:20:10.4977153+01:00 40003b2c-0002-fe00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T14:32:22.7519412+01:00 4000000e-0000-f200-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T14:32:22.7708797+01:00 40000005-0003-fe00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:02:16.5871848+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-03T23:02:16.5994942+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-03T23:02:16.6016728+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-03T23:02:22.8889082+01:00  [ERR] (node:5576) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (aca77900)
+2023-01-03T23:02:22.8914900+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:5576) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (79db0ad6)
+2023-01-03T23:02:28.7613553+01:00 40000016-0003-ff00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:02:29.7038476+01:00 40000435-0005-fd00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:04:32.7785917+01:00 4000422d-0002-f700-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:04:32.7965505+01:00 4000001a-0003-ff00-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:53:02.0068878+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-03T23:53:02.0153555+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-03T23:53:02.0171169+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-03T23:53:06.0486388+01:00  [ERR] (node:44200) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (957a1cd8)
+2023-01-03T23:53:06.0516636+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:44200) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (5d25b80e)
+2023-01-03T23:53:11.5352982+01:00 4000032c-0004-f200-b63f-84710c7967bb [INF] hei (7c58ae8f)
+2023-01-03T23:53:12.2622680+01:00 40000140-0000-f700-b63f-84710c7967bb [INF] hei (7c58ae8f)

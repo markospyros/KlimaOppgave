@@ -4,7 +4,7 @@ import AnswerInput from "../components/AnswerInput";
 import AnswerComponent from "../components/AnswerComponent";
 import PostComponent from "../components/PostComponent";
 
-const Home = () => {
+const Home = ({ user }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -62,6 +62,7 @@ const Home = () => {
           id={post.innleggId}
           tittel={post.tittel}
           innhold={post.innhold}
+          user={user}
           dato={post.dato}
           deletePost={deletePost}
         />
@@ -71,6 +72,7 @@ const Home = () => {
               <AnswerComponent
                 svarId={svar.svarId}
                 svarInnhold={svar.innhold}
+                user={user}
                 svarDato={svar.dato}
                 deleteAnswer={deleteAnswer}
               />

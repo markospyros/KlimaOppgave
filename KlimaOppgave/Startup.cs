@@ -45,6 +45,7 @@ namespace KlimaOppgave
             {
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/Log.txt");
+                //DBInit.Initialize(app);
             }
             else
             {
