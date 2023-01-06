@@ -20,7 +20,11 @@ const PostComponent = (props) => {
 
   const onHoverPost = () => {
     setCursor("pointer");
-    setVisibility("block");
+    if (props.author.brukerId === props.user.brukerId) {
+      setVisibility("block");
+    } else {
+      setVisibility("none");
+    }
   };
 
   const onLeavePost = () => {
@@ -37,7 +41,7 @@ const PostComponent = (props) => {
       >
         <div className="row">
           <div className="col-9">
-            <h5 className="card-title">{props.tittel}</h5>
+            <p className="card-text text-start">{props.author.brukernavn}</p>
           </div>
           <div className={`col-3 text-end d-${visibility}`}>
             <BiEdit
@@ -56,6 +60,7 @@ const PostComponent = (props) => {
               onClick={() => onDelete(props.id)}
             />
           </div>
+          <h5 className="card-title">{props.tittel}</h5>
         </div>
         <div className="row">
           <div className="col-12">

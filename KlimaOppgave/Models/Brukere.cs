@@ -13,5 +13,7 @@ namespace KlimaOppgave.Models
         public byte[] Salt { get; set; }
 
         public virtual ICollection<Innlegg> Innlegg { get; set; }
+
+        public virtual ICollection<Svar> Svar { get; set; }
     }
 }

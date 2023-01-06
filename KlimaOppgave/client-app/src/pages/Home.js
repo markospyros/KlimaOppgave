@@ -63,6 +63,7 @@ const Home = ({ user }) => {
           tittel={post.tittel}
           innhold={post.innhold}
           user={user}
+          author={post.bruker}
           dato={post.dato}
           deletePost={deletePost}
         />
@@ -80,7 +81,11 @@ const Home = ({ user }) => {
           ))}
         </div>
         <div>
-          <AnswerInput innleggId={post.innleggId} addAnswer={addAnswer} />
+          <AnswerInput
+            user={user}
+            innleggId={post.innleggId}
+            addAnswer={addAnswer}
+          />
         </div>
       </div>
     );

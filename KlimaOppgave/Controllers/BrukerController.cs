@@ -1,6 +1,7 @@
 ﻿using KlimaOppgave.DAL;
 using KlimaOppgave.Models;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -19,19 +20,16 @@ namespace KlimaOppgave.Controllers
     {
         private readonly SporsmalDbContext _db;
 
-        public BrukerController(SporsmalDbContext db)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        private const string _loggetInn = "loggetInn";
+
+        public BrukerController(SporsmalDbContext db, IHttpContextAccessor httpContextAccessor)
         {
             _db = db;
+            _httpContextAccessor = httpContextAccessor;
+
         }
-
-
-
-        /*        [HttpGet]
-                public async Task<ActionResult<IEnumerable<Bruker>>> HentKunder()
-                {
-                    return await _db.Brukere.ToListAsync();
-                }*/
-
 
         public static byte[] LagHash(string passord, byte[] salt)
         {
@@ -54,17 +52,26 @@ namespace KlimaOppgave.Controllers
         [HttpPost]
         public async Task<ActionResult<Bruker>> LagBruker([FromBody]Bruker bruker)
         {
-            var nyBruker = new Brukere();
-            nyBruker.Brukernavn = bruker.Brukernavn;
-            var passord = bruker.Passord;
-            byte[] salt = LagSalt();
-            byte[] hash = LagHash(passord, salt);
-            nyBruker.Passord = hash;
-            nyBruker.Salt = salt;
-            _db.Brukere.Add(nyBruker);
-            await _db.SaveChangesAsync();
+            Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
 
-            return Ok();
+            if (funnetBruker == null)
+            {
+                var nyBruker = new Brukere();
+                nyBruker.Brukernavn = bruker.Brukernavn;
+                var passord = bruker.Passord;
+                byte[] salt = LagSalt();
+                byte[] hash = LagHash(passord, salt);
+                nyBruker.Passord = hash;
+                nyBruker.Salt = salt;
+                _db.Brukere.Add(nyBruker);
+                await _db.SaveChangesAsync();
+
+                _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
+
+                return Ok(nyBruker.BrukerId);
+            }
+
+            return BadRequest("Den brukeren eksisterer allerede!");
         }
 
 
@@ -76,16 +83,17 @@ namespace KlimaOppgave.Controllers
                 // sjekk passordet
                 if (funnetBruker == null)
                 {
-                    return BadRequest(false);
+                    return BadRequest("Ugyldig brukernavn. Vennligst sjekk brukernavnet ditt og prøv igjen.");
                 }
 
                 byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
                 bool ok = hash.SequenceEqual(funnetBruker.Passord);
                 if (ok)
                 {
+                    _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
                     return Ok(funnetBruker.BrukerId);
                 }
-                return BadRequest(false);
+                return BadRequest("Feil passord. Prøv igjen.");
             }
             catch (Exception e)
             {

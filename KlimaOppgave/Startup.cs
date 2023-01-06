@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace KlimaOppgave
 {
@@ -36,6 +37,17 @@ namespace KlimaOppgave
             });
 
             services.AddDbContext<SporsmalDbContext>(options => options.UseSqlite("Data source=Sporsmal.db"));
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(1800);
+                options.Cookie.IsEssential = true;
+            });
+            services.AddDistributedMemoryCache();
+
+            services.AddHttpContextAccessor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +67,9 @@ namespace KlimaOppgave
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSession();
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
