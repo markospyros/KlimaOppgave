@@ -50,7 +50,6 @@ const AnswerInput = (props) => {
       const svar = {
         innhold: svarText,
         innleggId: props.innleggId,
-        brukerId: props.user.brukerId,
       };
 
       axios

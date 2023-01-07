@@ -156,7 +156,7 @@ namespace KlimaOppgave.Controllers
             {
                 return Unauthorized();
             }
-            bool returOK = await _db.SlettInnlegg(id);
+            bool returOK = await _db.SlettSvar(id);
             if (!returOK)
             {
                 _log.LogInformation("Sletting av svar ble ikke utført");
