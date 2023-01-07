@@ -11,7 +11,8 @@ namespace KlimaOppgave.Migrations
                 name: "Brukere",
                 columns: table => new
                 {
-                    BrukerId = table.Column<string>(nullable: false),
+                    BrukerId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Brukernavn = table.Column<string>(nullable: true),
                     Passord = table.Column<byte[]>(nullable: true),
                     Salt = table.Column<byte[]>(nullable: true)
@@ -30,14 +31,15 @@ namespace KlimaOppgave.Migrations
                     TimeStamp = table.Column<string>(nullable: true),
                     Tittel = table.Column<string>(nullable: true),
                     Innhold = table.Column<string>(nullable: true),
-                    BrukerId = table.Column<string>(nullable: true)
+                    BrukerId = table.Column<string>(nullable: true),
+                    BrukerId1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Innlegg", x => x.InnleggId);
                     table.ForeignKey(
-                        name: "FK_Innlegg_Brukere_BrukerId",
-                        column: x => x.BrukerId,
+                        name: "FK_Innlegg_Brukere_BrukerId1",
+                        column: x => x.BrukerId1,
                         principalTable: "Brukere",
                         principalColumn: "BrukerId",
                         onDelete: ReferentialAction.Restrict);
@@ -49,6 +51,7 @@ namespace KlimaOppgave.Migrations
                 {
                     SvarId = table.Column<string>(nullable: false),
                     BrukerId = table.Column<string>(nullable: true),
+                    BrukerId1 = table.Column<int>(nullable: true),
                     Innhold = table.Column<string>(nullable: true),
                     Dato = table.Column<string>(nullable: true),
                     TimeStamp = table.Column<string>(nullable: true),
@@ -58,8 +61,8 @@ namespace KlimaOppgave.Migrations
                 {
                     table.PrimaryKey("PK_Svar", x => x.SvarId);
                     table.ForeignKey(
-                        name: "FK_Svar_Brukere_BrukerId",
-                        column: x => x.BrukerId,
+                        name: "FK_Svar_Brukere_BrukerId1",
+                        column: x => x.BrukerId1,
                         principalTable: "Brukere",
                         principalColumn: "BrukerId",
                         onDelete: ReferentialAction.Restrict);
@@ -72,14 +75,14 @@ namespace KlimaOppgave.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Innlegg_BrukerId",
+                name: "IX_Innlegg_BrukerId1",
                 table: "Innlegg",
-                column: "BrukerId");
+                column: "BrukerId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Svar_BrukerId",
+                name: "IX_Svar_BrukerId1",
                 table: "Svar",
-                column: "BrukerId");
+                column: "BrukerId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Svar_InnleggId",

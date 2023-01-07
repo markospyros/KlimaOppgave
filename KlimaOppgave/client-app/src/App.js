@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AskQuestion from "./pages/AskQuestion";
 import EditQuestion from "./pages/EditQuestion";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import ProtectedRoute from "./pages/ProtectedRoute";
 import Register from "./pages/Register";
 import SharedLayout from "./pages/SharedLayout";
 
@@ -19,14 +19,7 @@ const App = () => {
           path="register"
           element={<Register setUser={setUser}></Register>}
         />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute user={user}>
-              <SharedLayout />
-            </ProtectedRoute>
-          }
-        >
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home user={user} />} />
           <Route path="askquestion" element={<AskQuestion user={user} />} />
           <Route path="edit/:id" element={<EditQuestion user={user} />} />

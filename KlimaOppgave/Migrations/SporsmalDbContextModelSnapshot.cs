@@ -18,8 +18,9 @@ namespace KlimaOppgave.Migrations
 
             modelBuilder.Entity("KlimaOppgave.Models.Brukere", b =>
                 {
-                    b.Property<string>("BrukerId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("BrukerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Brukernavn")
                         .HasColumnType("TEXT");
@@ -43,6 +44,9 @@ namespace KlimaOppgave.Migrations
                     b.Property<string>("BrukerId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("BrukerId1")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
 
@@ -57,7 +61,7 @@ namespace KlimaOppgave.Migrations
 
                     b.HasKey("InnleggId");
 
-                    b.HasIndex("BrukerId");
+                    b.HasIndex("BrukerId1");
 
                     b.ToTable("Innlegg");
                 });
@@ -69,6 +73,9 @@ namespace KlimaOppgave.Migrations
 
                     b.Property<string>("BrukerId")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("BrukerId1")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
@@ -84,7 +91,7 @@ namespace KlimaOppgave.Migrations
 
                     b.HasKey("SvarId");
 
-                    b.HasIndex("BrukerId");
+                    b.HasIndex("BrukerId1");
 
                     b.HasIndex("InnleggId");
 
@@ -95,14 +102,14 @@ namespace KlimaOppgave.Migrations
                 {
                     b.HasOne("KlimaOppgave.Models.Brukere", "Bruker")
                         .WithMany("Innlegg")
-                        .HasForeignKey("BrukerId");
+                        .HasForeignKey("BrukerId1");
                 });
 
             modelBuilder.Entity("KlimaOppgave.Models.Svar", b =>
                 {
                     b.HasOne("KlimaOppgave.Models.Brukere", "Bruker")
                         .WithMany("Svar")
-                        .HasForeignKey("BrukerId");
+                        .HasForeignKey("BrukerId1");
 
                     b.HasOne("KlimaOppgave.Models.Innlegg", "Innlegg")
                         .WithMany("Svar")

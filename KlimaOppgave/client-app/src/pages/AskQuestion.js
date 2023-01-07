@@ -15,6 +15,8 @@ const AskQuestion = ({ user }) => {
   const [innholdErrorMessageStatus, setInnholdErrorMessageStatus] =
     useState("none");
 
+  const navigate = useNavigate();
+
   const onFocusTittel = () => {
     setTittelInputState("border-primary");
     setTittelErrorMessageStatus("none");
@@ -53,8 +55,6 @@ const AskQuestion = ({ user }) => {
     setInnhold(inputValue);
   };
 
-  const navigate = useNavigate();
-
   const onSubmit = (event) => {
     const tittelWithoutSpace = tittel.trim();
 
@@ -64,10 +64,13 @@ const AskQuestion = ({ user }) => {
       const sporsmal = {
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
-        brukerId: user.brukerId,
       };
 
-      axios.post("/legginnlegg", sporsmal);
+      axios.post("/legginnlegg", sporsmal).catch((error) => {
+        if (error.response.status === 401) {
+          navigate("/login");
+        }
+      });
 
       setButtonStatus(
         <div

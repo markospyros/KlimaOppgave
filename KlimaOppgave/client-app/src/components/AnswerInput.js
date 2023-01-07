@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AnswerInput = (props) => {
   const [svarText, setSvarText] = useState("");
   const [buttonState, setButtonState] = useState("btn-secondary disabled");
   const [inputState, setInputState] = useState("border-secondary");
   const [errorMessageStatus, setErrorMessageStatus] = useState("none");
+
+  const navigate = useNavigate();
 
   const onFocus = () => {
     setInputState("border-primary");
@@ -50,13 +53,19 @@ const AnswerInput = (props) => {
         brukerId: props.user.brukerId,
       };
 
-      axios.post("/leggsvar", svar).then((response) => {
-        svar.svarId = response.data.svarId;
-        svar.dato = response.data.dato;
-        props.addAnswer(svar, svar.innleggId);
-      });
-
-      setSvarText("");
+      axios
+        .post("/leggsvar", svar)
+        .then((response) => {
+          svar.svarId = response.data.svarId;
+          svar.dato = response.data.dato;
+          props.addAnswer(svar, svar.innleggId);
+          setSvarText("");
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            navigate("/login");
+          }
+        });
     } else {
       setInputState("border-danger");
       setErrorMessageStatus("block");

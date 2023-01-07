@@ -1,7 +1,14 @@
+import axios from "axios";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const loggut = () => {
+    axios.get("/loggut").then(navigate("/login"));
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-sm">
@@ -19,9 +26,9 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="btn btn-danger" to="signout">
+              <button className="btn btn-danger" onClick={loggut}>
                 Logg ut
-              </NavLink>
+              </button>
             </li>
           </ul>
         </div>

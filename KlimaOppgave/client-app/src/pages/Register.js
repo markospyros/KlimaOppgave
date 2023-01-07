@@ -6,15 +6,38 @@ import AccountForm from "../components/AccountForm";
 const Register = ({ setUser }) => {
   const [brukernavn, setBrukernavn] = useState("");
   const [passord, setPassord] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [brukernavnErrorMessage, setBrukernavnErrorMessage] = useState("");
+  const [passordErrorMessage, setPassordErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
   const onChangeBrukernavn = (event) => {
-    setBrukernavn(event.target.value);
+    const inputValue = event.target.value;
+    setBrukernavn(inputValue);
+
+    const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
+
+    if (!regexp.test(inputValue)) {
+      setBrukernavnErrorMessage("Brukernavnet må bestå av 2 til 20 bokstaver");
+    } else {
+      setBrukernavnErrorMessage("");
+    }
   };
 
   const onChangePassord = (event) => {
+    const inputValue = event.target.value;
     setPassord(event.target.value);
+
+    const regexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+    if (!regexp.test(inputValue)) {
+      setPassordErrorMessage(
+        "Passordet må bestå minimum 6 tegn, minst en bokstav og et tall"
+      );
+    } else {
+      setPassordErrorMessage("");
+    }
   };
 
   const createAccount = async (event) => {
@@ -22,13 +45,13 @@ const Register = ({ setUser }) => {
 
     axios
       .post("/lagbruker", user)
-      .then((res) => {
-        user.brukerId = res.data;
-        setUser(user);
-        navigate("/");
-      })
+      .then(
+        setTimeout(() => {
+          navigate("/");
+        }, 1000)
+      )
       .catch((error) => {
-        console.log(error.response.data);
+        setErrorMessage(error.response.data);
       });
 
     event.preventDefault();
@@ -41,10 +64,13 @@ const Register = ({ setUser }) => {
         onSubmit={createAccount}
         brukernavn={brukernavn}
         passord={passord}
+        brukernavnErrorMessage={brukernavnErrorMessage}
+        passordErrorMessage={passordErrorMessage}
         onChangeBrukernavn={onChangeBrukernavn}
         onChangePassord={onChangePassord}
         path="login"
         text="Har du allerede konto? Klikk her"
+        errorMessage={errorMessage}
         buttonText="Registrer"
       />
     </>

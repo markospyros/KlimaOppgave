@@ -20,6 +20,9 @@ const AccountForm = (props) => {
                   onChange={props.onChangeBrukernavn}
                 />
               </div>
+              <div className={`invalid-feedback d-block`}>
+                {props.brukernavnErrorMessage}
+              </div>
               <div className="mb-3">
                 <label className="form-label">Passord</label>
                 <input
@@ -29,6 +32,9 @@ const AccountForm = (props) => {
                   onChange={props.onChangePassord}
                 />
               </div>
+              <div className={`invalid-feedback d-block`}>
+                {props.passordErrorMessage}
+              </div>
               <div className="mb-3 form-label">
                 <label
                   className="form-label text-primary"
@@ -37,6 +43,9 @@ const AccountForm = (props) => {
                 >
                   <u>{props.text}</u>
                 </label>
+              </div>
+              <div className={`invalid-feedback d-block`}>
+                {props.errorMessage}
               </div>
               <div className="d-grid gap-2 mt-5">
                 <button className="btn btn-primary" onClick={props.onSubmit}>

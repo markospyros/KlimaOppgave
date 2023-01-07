@@ -1,11 +1,13 @@
 ﻿using KlimaOppgave.DAL;
 using KlimaOppgave.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace KlimaOppgave.Controllers
@@ -13,11 +15,13 @@ namespace KlimaOppgave.Controllers
     [Route("/[action]")]
     public class InnleggController : ControllerBase
     {
-        private readonly SporsmalDbContext _db;
+        private IInnleggRepository _db;
 
         private ILogger<InnleggController> _log;
 
-        public InnleggController(SporsmalDbContext db, ILogger<InnleggController> log)
+        private const string _loggetInn = "loggetInn";
+
+        public InnleggController(IInnleggRepository db, ILogger<InnleggController> log)
         {
             _db = db;
             _log = log;
@@ -26,120 +30,139 @@ namespace KlimaOppgave.Controllers
         [HttpPost]
         public async Task<ActionResult<Innlegg>> LeggInnlegg([FromBody] Innlegg innlegg)
         {
-            try
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                _db.Innlegg.Add(innlegg);
-                await _db.SaveChangesAsync();
-                return Ok(innlegg);
+                return Unauthorized();
             }
-            catch (Exception e)
+            if (ModelState.IsValid)
             {
-                return BadRequest(e);
+                bool returOK = await _db.LeggInnlegg(innlegg);
+                if (!returOK)
+                {
+                    _log.LogInformation("Innlegg kunne ikke lagres!");
+                    return BadRequest("Innlegg kunne ikke lagres");
+                }
+                return Ok("Innlegg lagret");
             }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Innlegg>>> HentInnlegg()
+        public async Task<ActionResult> HentInnlegg()
         {
-            try
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                _log.LogInformation("hei");
-                return await _db.Innlegg
-                    .Include(x => x.Bruker)
-                    .Include(y => y.Svar)
-                    .ToListAsync();
+                return Unauthorized();
             }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            List<Innlegg> alleInnlegg = await _db.HentInnlegg();
+            return Ok(alleInnlegg);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Innlegg>> HentEnInnlegg(string id)
         {
-            try
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                var innlegg = await _db.Innlegg
-                    .Include(x => x.Bruker)
-                    .Include(y => y.Svar)
-                    .FirstOrDefaultAsync(x => x.InnleggId == id);
-
+                return Unauthorized();
+            }
+            if (ModelState.IsValid)
+            {
+                Innlegg innlegg = await _db.HentEnInnlegg(id);
+                if (innlegg == null)
+                {
+                    _log.LogInformation("Fant ikke innlegg");
+                    return NotFound("Fant ikke innlegg");
+                }
                 return Ok(innlegg);
             }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettInnlegg(string id)
         {
-            var innlegg = await _db.Innlegg
-                .Include(x => x.Svar)
-                .FirstOrDefaultAsync(x => x.InnleggId == id);
-            
-            var svar = _db.Svar.Where(x => x.InnleggId == id);
-
-            _db.Innlegg.Remove(innlegg);
-            _db.Svar.RemoveRange(svar);
-
-            await _db.SaveChangesAsync();
-
-            return Ok();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            bool returOK = await _db.SlettInnlegg(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Sletting av innlegg ble ikke utført");
+                return NotFound("Sletting av innlegg ble ikke utført");
+            }
+            return Ok("Innlegg slettet");
         }
 
         [HttpPost]
         public async Task<ActionResult<Innlegg>> EndreInnlegg([FromBody] Innlegg innlegg)
         {
-            _db.Innlegg.Update(innlegg);
-            await _db.SaveChangesAsync();
-
-            return Ok();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _db.EndreInnlegg(innlegg);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound("Endringen av kunden kunne ikke utføres");
+                }
+                return Ok("Innlegg endret");
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         [HttpPost]
         public async Task<ActionResult<Svar>> LeggSvar([FromBody] Svar svar)
         {
-            try
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                _db.Svar.Add(svar);
-
-                await _db.SaveChangesAsync();
-
+                return Unauthorized();
+            }
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _db.LeggSvar(svar);
+                if (!returOK)
+                {
+                    _log.LogInformation("Svar kunne ikke lagres!");
+                    return BadRequest("Svar kunne ikke lagres");
+                }
                 return Ok(svar);
             }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Svar>>> HentSvar()
+        public async Task<ActionResult> HentSvar()
         {
-            try
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return await _db.Svar
-                    .Include(x => x.Innlegg)
-                    .Include(y => y.Bruker)
-                    .ToListAsync();
+                return Unauthorized();
             }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            List<Svar> alleSvar = await _db.HentSvar();
+            return Ok(alleSvar);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettSvar(string id)
         {
-            var svar = await _db.Svar.FindAsync(id);
-            _db.Svar.Remove(svar);
-            await _db.SaveChangesAsync();
-
-            return Ok();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            bool returOK = await _db.SlettInnlegg(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Sletting av svar ble ikke utført");
+                return NotFound("Sletting av svar ble ikke utført");
+            }
+            return Ok("Svar slettet");
         }
     }
 }

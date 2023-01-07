@@ -14,17 +14,21 @@ const PostComponent = (props) => {
   };
 
   const onDelete = (id) => {
-    axios.delete(`/slettinnlegg/${id}`);
+    axios.delete(`/slettinnlegg/${id}`).catch((error) => {
+      if (error.response.status === 401) {
+        navigate("/login");
+      }
+    });
     props.deletePost(id);
   };
 
   const onHoverPost = () => {
     setCursor("pointer");
-    if (props.author.brukerId === props.user.brukerId) {
-      setVisibility("block");
-    } else {
-      setVisibility("none");
-    }
+    // if (props.author.brukerId === props.user.brukerId) {
+    setVisibility("block");
+    // } else {
+    //   setVisibility("none");
+    // }
   };
 
   const onLeavePost = () => {
@@ -41,13 +45,13 @@ const PostComponent = (props) => {
       >
         <div className="row">
           <div className="col-9">
-            <p className="card-text text-start">{props.author.brukernavn}</p>
+            <h5 className="card-title">{props.tittel}</h5>
           </div>
           <div className={`col-3 text-end d-${visibility}`}>
             <BiEdit
               color="blue"
               size={20}
-              className="mx-4"
+              className="mx-3"
               onClick={() => onEdit(props.id)}
             />
             <BiTrash
@@ -60,7 +64,6 @@ const PostComponent = (props) => {
               onClick={() => onDelete(props.id)}
             />
           </div>
-          <h5 className="card-title">{props.tittel}</h5>
         </div>
         <div className="row">
           <div className="col-12">

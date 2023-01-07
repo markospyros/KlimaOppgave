@@ -18,16 +18,16 @@ namespace KlimaOppgave.Controllers
     [Route("/[action]")]
     public class BrukerController : ControllerBase
     {
-        private readonly SporsmalDbContext _db;
+        private IBrukerRepository _db;
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ILogger<BrukerController> _log;
 
         private const string _loggetInn = "loggetInn";
 
-        public BrukerController(SporsmalDbContext db, IHttpContextAccessor httpContextAccessor)
+        public BrukerController(IBrukerRepository db, ILogger<BrukerController> log)
         {
             _db = db;
-            _httpContextAccessor = httpContextAccessor;
+            _log = log;
 
         }
 
@@ -50,56 +50,46 @@ namespace KlimaOppgave.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Bruker>> LagBruker([FromBody]Bruker bruker)
+        public async Task<ActionResult> LagBruker([FromBody]Bruker bruker)
         {
-            Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
-
-            if (funnetBruker == null)
+            if (ModelState.IsValid)
             {
-                var nyBruker = new Brukere();
-                nyBruker.Brukernavn = bruker.Brukernavn;
-                var passord = bruker.Passord;
-                byte[] salt = LagSalt();
-                byte[] hash = LagHash(passord, salt);
-                nyBruker.Passord = hash;
-                nyBruker.Salt = salt;
-                _db.Brukere.Add(nyBruker);
-                await _db.SaveChangesAsync();
-
-                _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
-
-                return Ok(nyBruker.BrukerId);
+                bool returOK = await _db.LagBruker(bruker);
+                if (!returOK)
+                {
+                    _log.LogInformation("Bruker kunne ikke lagres!");
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return BadRequest("Bruker kunne ikke lagres");
+                }
+                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                return Ok("Bruker lagret");
             }
-
-            return BadRequest("Den brukeren eksisterer allerede!");
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
 
         public async Task<ActionResult> LoggInn([FromBody]Bruker bruker)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
-                // sjekk passordet
-                if (funnetBruker == null)
+                bool returnOK = await _db.LoggInn(bruker);
+                if (!returnOK)
                 {
-                    return BadRequest("Ugyldig brukernavn. Vennligst sjekk brukernavnet ditt og prøv igjen.");
+                    _log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return Ok(false);
                 }
+                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                return Ok(true);
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
 
-                byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
-                bool ok = hash.SequenceEqual(funnetBruker.Passord);
-                if (ok)
-                {
-                    _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
-                    return Ok(funnetBruker.BrukerId);
-                }
-                return BadRequest("Feil passord. Prøv igjen.");
-            }
-            catch (Exception e)
-            {
-                // _log.LogInformation(e.Message);
-                return BadRequest(false);
-            }
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
         }
     }
 }

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "../components/Form";
 
-const EditQuestion = () => {
+const EditQuestion = ({ user }) => {
   let { id } = useParams();
 
   const [post, setPost] = useState();
@@ -18,12 +18,21 @@ const EditQuestion = () => {
   const [innholdErrorMessageStatus, setInnholdErrorMessageStatus] =
     useState("none");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    axios.get(`/henteninnlegg/${id}`).then((res) => {
-      setPost(res.data);
-      setTittel(res.data.tittel);
-      setInnhold(res.data.innhold);
-    });
+    axios
+      .get(`/henteninnlegg/${id}`)
+      .then((res) => {
+        setPost(res.data);
+        setTittel(res.data.tittel);
+        setInnhold(res.data.innhold);
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          navigate("/login");
+        }
+      });
   }, [id]);
 
   const onFocusTittel = () => {
@@ -64,8 +73,6 @@ const EditQuestion = () => {
     setInnhold(inputValue);
   };
 
-  const navigate = useNavigate();
-
   const onSubmit = (event) => {
     const tittelWithoutSpace = tittel.trim();
 
@@ -78,6 +85,7 @@ const EditQuestion = () => {
         timeStamp: post.timeStamp,
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
+        //brukerId: user.brukerId,
       };
 
       axios.post("/endreinnlegg", endretInnlegg);

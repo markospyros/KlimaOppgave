@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const AnswerComponent = (props) => {
   const [cursor, setCursor] = useState("default");
@@ -18,8 +19,17 @@ const AnswerComponent = (props) => {
     setCursor("pointer");
   };
 
+  const navigate = useNavigate();
+
   const onDelete = (id) => {
-    axios.delete(`/slettsvar/${id}`).then(() => props.deleteAnswer(id));
+    axios
+      .delete(`/slettsvar/${id}`)
+      .then(() => props.deleteAnswer(id))
+      .catch((error) => {
+        if (error.response.status === 401) {
+          navigate("/login");
+        }
+      });
   };
 
   return (

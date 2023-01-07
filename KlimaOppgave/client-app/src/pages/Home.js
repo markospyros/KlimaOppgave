@@ -3,12 +3,22 @@ import React, { useEffect, useState } from "react";
 import AnswerInput from "../components/AnswerInput";
 import AnswerComponent from "../components/AnswerComponent";
 import PostComponent from "../components/PostComponent";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ user }) => {
   const [posts, setPosts] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    axios.get("/hentinnlegg").then((response) => setPosts(response.data));
+    axios
+      .get("/hentinnlegg")
+      .then((response) => setPosts(response.data))
+      .catch((error) => {
+        if (error.response.status === 401) {
+          navigate("/login");
+        }
+      });
   }, []);
 
   const sortBasedOnTime = () => {

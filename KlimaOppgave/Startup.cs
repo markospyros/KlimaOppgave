@@ -37,7 +37,8 @@ namespace KlimaOppgave
             });
 
             services.AddDbContext<SporsmalDbContext>(options => options.UseSqlite("Data source=Sporsmal.db"));
-
+            services.AddScoped<IBrukerRepository, BrukerRepository>();
+            services.AddScoped<IInnleggRepository, InnleggRepository>();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".AdventureWorks.Session";
@@ -45,8 +46,6 @@ namespace KlimaOppgave
                 options.Cookie.IsEssential = true;
             });
             services.AddDistributedMemoryCache();
-
-            services.AddHttpContextAccessor();
 
         }
 
