@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KlimaOppgave", "KlimaOppgave\KlimaOppgave.csproj", "{FA1C8249-D191-43B4-9E80-B76E19D37907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KlimaOppgave", "KlimaOppgave\KlimaOppgave.csproj", "{FA1C8249-D191-43B4-9E80-B76E19D37907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{94F4CF9D-49A5-4BBE-895C-A02F00872C74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FA1C8249-D191-43B4-9E80-B76E19D37907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA1C8249-D191-43B4-9E80-B76E19D37907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA1C8249-D191-43B4-9E80-B76E19D37907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F4CF9D-49A5-4BBE-895C-A02F00872C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F4CF9D-49A5-4BBE-895C-A02F00872C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F4CF9D-49A5-4BBE-895C-A02F00872C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F4CF9D-49A5-4BBE-895C-A02F00872C74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
