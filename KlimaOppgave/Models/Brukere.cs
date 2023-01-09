@@ -11,9 +11,5 @@ namespace KlimaOppgave.Models
         public string Brukernavn { get; set; } 
         public byte[] Passord { get; set; }
         public byte[] Salt { get; set; }
-
-/*        public virtual ICollection<Innlegg> Innlegg { get; set; }
-
-        public virtual ICollection<Svar> Svar { get; set; }*/
     }
 }

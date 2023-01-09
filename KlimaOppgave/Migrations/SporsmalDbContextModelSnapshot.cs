@@ -38,13 +38,8 @@ namespace KlimaOppgave.Migrations
 
             modelBuilder.Entity("KlimaOppgave.Models.Innlegg", b =>
                 {
-                    b.Property<string>("InnleggId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BrukerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("BrukerId1")
+                    b.Property<int>("InnleggId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Dato")
@@ -61,20 +56,13 @@ namespace KlimaOppgave.Migrations
 
                     b.HasKey("InnleggId");
 
-                    b.HasIndex("BrukerId1");
-
                     b.ToTable("Innlegg");
                 });
 
             modelBuilder.Entity("KlimaOppgave.Models.Svar", b =>
                 {
-                    b.Property<string>("SvarId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BrukerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("BrukerId1")
+                    b.Property<int>("SvarId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Dato")
@@ -83,37 +71,26 @@ namespace KlimaOppgave.Migrations
                     b.Property<string>("Innhold")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("InnleggId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("InnleggId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("TimeStamp")
                         .HasColumnType("TEXT");
 
                     b.HasKey("SvarId");
 
-                    b.HasIndex("BrukerId1");
-
                     b.HasIndex("InnleggId");
 
                     b.ToTable("Svar");
                 });
 
-            modelBuilder.Entity("KlimaOppgave.Models.Innlegg", b =>
-                {
-                    b.HasOne("KlimaOppgave.Models.Brukere", "Bruker")
-                        .WithMany("Innlegg")
-                        .HasForeignKey("BrukerId1");
-                });
-
             modelBuilder.Entity("KlimaOppgave.Models.Svar", b =>
                 {
-                    b.HasOne("KlimaOppgave.Models.Brukere", "Bruker")
-                        .WithMany("Svar")
-                        .HasForeignKey("BrukerId1");
-
                     b.HasOne("KlimaOppgave.Models.Innlegg", "Innlegg")
                         .WithMany("Svar")
-                        .HasForeignKey("InnleggId");
+                        .HasForeignKey("InnleggId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

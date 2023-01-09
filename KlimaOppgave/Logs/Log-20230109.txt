@@ -1,0 +1,24 @@
+2023-01-09T00:35:57.8455227+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-09T00:35:57.8506625+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-09T00:35:57.8525192+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-09T00:36:02.4481501+01:00  [ERR] (node:31216) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (6883acc9)
+2023-01-09T00:36:02.4515839+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:31216) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (ece7de16)
+2023-01-09T01:20:57.5229880+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-09T01:20:57.5312806+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-09T01:20:57.5358418+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-09T01:21:01.3880900+01:00  [ERR] (node:22956) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (4bcdb413)
+2023-01-09T01:21:01.3907961+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:22956) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (158e0d30)
+2023-01-09T02:34:29.5337550+01:00 40000043-0006-fc00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:36:00.7040549+01:00 4000007f-0004-fd00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:36:08.9740452+01:00 4000004b-0006-fc00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:36:17.8233196+01:00 4000008b-0001-fd00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-09T02:36:24.4057983+01:00 40000098-0000-fd00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:37:41.0986595+01:00 4000004d-0006-fc00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:37:46.5155404+01:00 4000004f-0006-fc00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-09T02:38:19.6746878+01:00 40000063-0003-ff00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)

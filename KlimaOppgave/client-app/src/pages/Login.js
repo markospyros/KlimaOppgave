@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AccountForm from "../components/AccountForm";
 
-const Login = ({ setUser }) => {
+const Login = () => {
   const [brukernavn, setBrukernavn] = useState("");
   const [passord, setPassord] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [brukernavnErrorMessage, setBrukernavnErrorMessage] = useState("");
   const [passordErrorMessage, setPassordErrorMessage] = useState("");
+  const [buttonStatus, setButtonStatus] = useState("Logg inn");
 
   const navigate = useNavigate();
 
@@ -48,7 +49,21 @@ const Login = ({ setUser }) => {
         .post("/logginn", user)
         .then((res) => {
           if (res.data === true) {
-            navigate("/");
+            setButtonStatus(
+              <div
+                className="spinner-border spinner-border-sm text-light"
+                role="status"
+              >
+                <span className="visually-hidden"></span>
+              </div>
+            );
+            setTimeout(() => {
+              navigate("/");
+            }, 1000);
+          } else {
+            setErrorMessage(
+              "Kunne ikke logge inn med det brukenavnet. Vennligst prøv igjen."
+            );
           }
         })
         .catch((error) => {
@@ -80,7 +95,7 @@ const Login = ({ setUser }) => {
         path="register"
         text="Har du ikke konto? Klikk her"
         errorMessage={errorMessage}
-        buttonText="Logg inn"
+        buttonStatus={buttonStatus}
       />
     </>
   );

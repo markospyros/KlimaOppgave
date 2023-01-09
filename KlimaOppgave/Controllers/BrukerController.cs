@@ -76,7 +76,7 @@ namespace KlimaOppgave.Controllers
                 bool returnOK = await _db.LoggInn(bruker);
                 if (!returnOK)
                 {
-                    _log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
+                    _log.LogInformation("Innloggingen feilet for bruker");
                     HttpContext.Session.SetString(_loggetInn, "");
                     return Ok(false);
                 }

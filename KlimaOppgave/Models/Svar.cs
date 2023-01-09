@@ -5,11 +5,7 @@ namespace KlimaOppgave.Models
 {
     public class Svar
     {
-        public string SvarId { get; set; } = Guid.NewGuid().ToString();
-
-        public string BrukerId { get; set; }
-
-        public virtual Brukere Bruker { get; set; }
+        public int SvarId { get; set; }
 
         public string Innhold { get; set;}
 
@@ -17,7 +13,7 @@ namespace KlimaOppgave.Models
 
         public string TimeStamp { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
 
-        public string InnleggId { get; set; }
+        public int InnleggId { get; set; }
         public virtual Innlegg Innlegg { get; set; }
     }
 }

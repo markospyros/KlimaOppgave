@@ -28,11 +28,11 @@ namespace KlimaOppgave.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Innlegg>> LeggInnlegg([FromBody] Innlegg innlegg)
+        public async Task<ActionResult> LeggInnlegg([FromBody] Innlegg innlegg)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
@@ -53,26 +53,26 @@ namespace KlimaOppgave.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             List<Innlegg> alleInnlegg = await _db.HentInnlegg();
             return Ok(alleInnlegg);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Innlegg>> HentEnInnlegg(string id)
+        public async Task<ActionResult> HentEnInnlegg(int id)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
                 Innlegg innlegg = await _db.HentEnInnlegg(id);
                 if (innlegg == null)
                 {
-                    _log.LogInformation("Fant ikke innlegg");
-                    return NotFound("Fant ikke innlegg");
+                    _log.LogInformation("Fant ikke Innlegg");
+                    return NotFound("Fant ikke Innlegg");
                 }
                 return Ok(innlegg);
             }
@@ -81,27 +81,27 @@ namespace KlimaOppgave.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> SlettInnlegg(string id)
+        public async Task<ActionResult> SlettInnlegg(int id)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             bool returOK = await _db.SlettInnlegg(id);
             if (!returOK)
             {
-                _log.LogInformation("Sletting av innlegg ble ikke utført");
-                return NotFound("Sletting av innlegg ble ikke utført");
+                _log.LogInformation("Sletting av Innlegg ble ikke utført");
+                return NotFound("Sletting av Innlegg ble ikke utført");
             }
             return Ok("Innlegg slettet");
         }
 
         [HttpPost]
-        public async Task<ActionResult<Innlegg>> EndreInnlegg([FromBody] Innlegg innlegg)
+        public async Task<ActionResult> EndreInnlegg([FromBody] Innlegg innlegg)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace KlimaOppgave.Controllers
                 if (!returOK)
                 {
                     _log.LogInformation("Endringen kunne ikke utføres");
-                    return NotFound("Endringen av kunden kunne ikke utføres");
+                    return NotFound("Endringen av innlegg kunne ikke utføres");
                 }
                 return Ok("Innlegg endret");
             }
@@ -118,11 +118,11 @@ namespace KlimaOppgave.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Svar>> LeggSvar([FromBody] Svar svar)
+        public async Task<ActionResult> LeggSvar([FromBody] Svar svar)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
@@ -143,18 +143,39 @@ namespace KlimaOppgave.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             List<Svar> alleSvar = await _db.HentSvar();
             return Ok(alleSvar);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> SlettSvar(string id)
+        [HttpPost]
+        public async Task<ActionResult> EndreSvar([FromBody] Svar svar)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
+            }
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _db.EndreSvar(svar);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound("Endringen av svar kunne ikke utføres");
+                }
+                return Ok("Svar endret");
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> SlettSvar(int id)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized("Ikke logget inn");
             }
             bool returOK = await _db.SlettSvar(id);
             if (!returOK)

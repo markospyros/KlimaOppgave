@@ -4,7 +4,6 @@ import { BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 const PostComponent = (props) => {
-  const [cursor, setCursor] = useState("default");
   const [visibility, setVisibility] = useState("none");
 
   const navigate = useNavigate();
@@ -23,12 +22,7 @@ const PostComponent = (props) => {
   };
 
   const onHoverPost = () => {
-    setCursor("pointer");
-    // if (props.author.brukerId === props.user.brukerId) {
     setVisibility("block");
-    // } else {
-    //   setVisibility("none");
-    // }
   };
 
   const onLeavePost = () => {
@@ -39,7 +33,6 @@ const PostComponent = (props) => {
     <>
       <div
         className="card-body"
-        style={{ cursor: cursor }}
         onMouseEnter={onHoverPost}
         onMouseLeave={onLeavePost}
       >
@@ -52,15 +45,13 @@ const PostComponent = (props) => {
               color="blue"
               size={20}
               className="mx-3"
+              style={{ cursor: "pointer" }}
               onClick={() => onEdit(props.id)}
             />
             <BiTrash
               color="red"
               size={20}
-              style={{ cursor: cursor }}
-              onMouseEnter={() => {
-                setCursor("pointer");
-              }}
+              style={{ cursor: "pointer" }}
               onClick={() => onDelete(props.id)}
             />
           </div>

@@ -85,7 +85,6 @@ const EditQuestion = ({ user }) => {
         timeStamp: post.timeStamp,
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
-        //brukerId: user.brukerId,
       };
 
       axios.post("/endreinnlegg", endretInnlegg);

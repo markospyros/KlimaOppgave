@@ -47,6 +47,21 @@ const Home = ({ user }) => {
     setPosts(updatedPosts);
   };
 
+  const updateAnswer = (updatedAnswer) => {
+    const updatedPosts = posts.map((post) => {
+      if (post.innleggId === updatedAnswer.innleggId) {
+        post.svar = post.svar.map((svar) => {
+          if (svar.svarId === updatedAnswer.svarId) {
+            return updatedAnswer;
+          }
+          return svar;
+        });
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+  };
+
   const deleteAnswer = (id) => {
     const updatedPosts = posts.map((post) => {
       post.svar = post.svar.filter((svar) => svar.svarId !== id);
@@ -83,8 +98,10 @@ const Home = ({ user }) => {
               <AnswerComponent
                 svarId={svar.svarId}
                 svarInnhold={svar.innhold}
+                innleggId={svar.innleggId}
                 user={user}
                 svarDato={svar.dato}
+                updateAnswer={updateAnswer}
                 deleteAnswer={deleteAnswer}
               />
             </div>

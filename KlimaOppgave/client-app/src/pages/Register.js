@@ -9,6 +9,7 @@ const Register = ({ setUser }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [brukernavnErrorMessage, setBrukernavnErrorMessage] = useState("");
   const [passordErrorMessage, setPassordErrorMessage] = useState("");
+  const [buttonStatus, setButtonStatus] = useState("Registrer");
 
   const navigate = useNavigate();
 
@@ -45,11 +46,19 @@ const Register = ({ setUser }) => {
 
     axios
       .post("/lagbruker", user)
-      .then(
+      .then(() => {
+        setButtonStatus(
+          <div
+            className="spinner-border spinner-border-sm text-light"
+            role="status"
+          >
+            <span className="visually-hidden"></span>
+          </div>
+        );
         setTimeout(() => {
           navigate("/");
-        }, 1000)
-      )
+        }, 1000);
+      })
       .catch((error) => {
         setErrorMessage(error.response.data);
       });
@@ -71,7 +80,7 @@ const Register = ({ setUser }) => {
         path="login"
         text="Har du allerede konto? Klikk her"
         errorMessage={errorMessage}
-        buttonText="Registrer"
+        buttonStatus={buttonStatus}
       />
     </>
   );

@@ -49,7 +49,7 @@ const AccountForm = (props) => {
               </div>
               <div className="d-grid gap-2 mt-5">
                 <button className="btn btn-primary" onClick={props.onSubmit}>
-                  {props.buttonText}
+                  {props.buttonStatus}
                 </button>
               </div>
             </form>

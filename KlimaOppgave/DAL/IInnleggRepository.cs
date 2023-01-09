@@ -10,9 +10,9 @@ namespace KlimaOppgave.DAL
 
         Task<List<Innlegg>> HentInnlegg();
 
-        Task<Innlegg> HentEnInnlegg(string id);
+        Task<Innlegg> HentEnInnlegg(int id);
 
-        Task<bool> SlettInnlegg(string id);
+        Task<bool> SlettInnlegg(int id);
 
         Task<bool> EndreInnlegg(Innlegg innlegg);
 
@@ -20,6 +20,8 @@ namespace KlimaOppgave.DAL
 
         Task<List<Svar>> HentSvar();
 
-        Task<bool> SlettSvar(string id);
+        Task<bool> EndreSvar(Svar svar);
+
+        Task<bool> SlettSvar(int id);
     }
 }

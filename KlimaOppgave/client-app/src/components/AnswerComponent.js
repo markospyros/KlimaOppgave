@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import ChangeAnswerModal from "./ChangeAnswerModal";
 
 const AnswerComponent = (props) => {
-  const [cursor, setCursor] = useState("default");
   const [visibility, setVisibility] = useState("none");
+  const [showModal, setShowModal] = useState(false);
 
   const onHoverAnswer = () => {
     setVisibility("block");
@@ -15,8 +16,12 @@ const AnswerComponent = (props) => {
     setVisibility("none");
   };
 
-  const onHoverIcon = () => {
-    setCursor("pointer");
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   const navigate = useNavigate();
@@ -43,16 +48,31 @@ const AnswerComponent = (props) => {
           <div>{props.svarInnhold}</div>
         </div>
         <div className={`col-3 text-end d-${visibility}`}>
+          <BiEdit
+            color="blue"
+            size={20}
+            className="mx-3"
+            style={{ cursor: "pointer" }}
+            onClick={openModal}
+          />
           <BiTrash
             color="red"
             size={20}
-            style={{ cursor: cursor }}
-            onMouseEnter={onHoverIcon}
+            style={{ cursor: "pointer" }}
             onClick={() => onDelete(props.svarId)}
           />
         </div>
         <div className="text-end text-secondary">{props.svarDato}</div>
       </div>
+      <ChangeAnswerModal
+        svarId={props.svarId}
+        svarInnhold={props.svarInnhold}
+        svarDato={props.svarDato}
+        innleggId={props.innleggId}
+        showModal={showModal}
+        updateAnswer={props.updateAnswer}
+        closeModal={closeModal}
+      />
     </div>
   );
 };

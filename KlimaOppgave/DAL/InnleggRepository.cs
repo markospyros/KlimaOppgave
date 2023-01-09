@@ -56,7 +56,7 @@ namespace KlimaOppgave.DAL
         }
 
         [HttpGet("{id}")]
-        public async Task<Innlegg> HentEnInnlegg(string id)
+        public async Task<Innlegg> HentEnInnlegg(int id)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace KlimaOppgave.DAL
         }
 
         [HttpDelete("{id}")]
-        public async Task<bool> SlettInnlegg(string id)
+        public async Task<bool> SlettInnlegg(int id)
         {
             try
             {
@@ -151,8 +151,25 @@ namespace KlimaOppgave.DAL
             }
         }
 
+        [HttpPost]
+        public async Task<bool> EndreSvar(Svar svar)
+        {
+            try
+            {
+                _db.Svar.Update(svar);
+                await _db.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
+
         [HttpDelete("{id}")]
-        public async Task<bool> SlettSvar(string id)
+        public async Task<bool> SlettSvar(int id)
         {
             try
             {
