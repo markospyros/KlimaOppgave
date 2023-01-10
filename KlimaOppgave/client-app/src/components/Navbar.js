@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-sm">
         <NavLink className="navbar-brand" to="/">
-          AskKlima
+          KlimaOverflow
         </NavLink>
         <div className="collapse navbar-collapse">
           <ul

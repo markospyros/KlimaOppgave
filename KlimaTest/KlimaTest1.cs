@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -41,7 +42,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel1",
-                Innhold = "Innhold1"
+                Innhold = "Innhold1",
+                Brukernavn="TestBruker1"
             };
 
             var svar1 = new Svar
@@ -51,7 +53,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar1",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg= innlegg1
+                Innlegg= innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar2 = new Svar
@@ -61,7 +64,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar2",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar3 = new Svar
@@ -71,7 +75,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar3",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar1 = new List<Svar>();
@@ -87,7 +92,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel2",
-                Innhold = "Innhold2"
+                Innhold = "Innhold2",
+                Brukernavn = "TestBruker1"
             };
 
             var svar4 = new Svar
@@ -97,7 +103,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar4",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var svar5 = new Svar
@@ -107,7 +114,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar5",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var svar6 = new Svar
@@ -117,7 +125,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar6",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar2 = new List<Svar>();
@@ -133,7 +142,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel3",
-                Innhold = "Innhold3"
+                Innhold = "Innhold3",
+                Brukernavn = "TestBruker1"
             };
 
             var svar7 = new Svar
@@ -143,7 +153,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar7",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var svar8 = new Svar
@@ -153,7 +164,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar8",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var svar9 = new Svar
@@ -163,7 +175,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar9",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar3 = new List<Svar>();
@@ -263,7 +276,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "",
-                Innhold = "Innhold1"
+                Innhold = "Innhold1",
+                Brukernavn = "TestBruker1"
             };
 
             var svar1 = new Svar
@@ -273,7 +287,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar1",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar2 = new Svar
@@ -283,7 +298,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar2",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar3 = new Svar
@@ -293,7 +309,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar3",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar1 = new List<Svar>();
@@ -411,7 +428,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "",
-                Innhold = "Innhold1"
+                Innhold = "Innhold1",
+                Brukernavn = "TestBruker1"
             };
 
             var svar1 = new Svar
@@ -421,7 +439,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar1",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar2 = new Svar
@@ -431,7 +450,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar2",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar3 = new Svar
@@ -441,7 +461,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar3",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar1 = new List<Svar>();
@@ -559,7 +580,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "",
-                Innhold = "Innhold1"
+                Innhold = "Innhold1",
+                Brukernavn = "TestBruker1"
             };
 
             var svar1 = new Svar
@@ -569,7 +591,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar1",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar2 = new Svar
@@ -579,7 +602,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar2",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar3 = new Svar
@@ -589,7 +613,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar3",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar1 = new List<Svar>();
@@ -646,7 +671,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel1",
-                Innhold = "Innhold1"
+                Innhold = "Innhold1",
+                Brukernavn = "TestBruker1"
             };
 
             var svar1 = new Svar
@@ -656,7 +682,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar1",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar2 = new Svar
@@ -666,7 +693,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar2",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var svar3 = new Svar
@@ -676,7 +704,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar3",
                 InnleggId = innlegg1.InnleggId,
-                Innlegg = innlegg1
+                Innlegg = innlegg1,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar1 = new List<Svar>();
@@ -692,7 +721,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel2",
-                Innhold = "Innhold2"
+                Innhold = "Innhold2",
+                Brukernavn = "TestBruker1"
             };
 
             var svar4 = new Svar
@@ -702,7 +732,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar4",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var svar5 = new Svar
@@ -712,7 +743,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar5",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var svar6 = new Svar
@@ -722,7 +754,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar6",
                 InnleggId = innlegg2.InnleggId,
-                Innlegg = innlegg2
+                Innlegg = innlegg2,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar2 = new List<Svar>();
@@ -738,7 +771,8 @@ namespace TestProject1
                 Dato = DateTime.Now.ToString("dddd dd MMMM yyyy HH:mm", CultureInfo.CreateSpecificCulture("nb-NO")),
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Tittel = "Tittel3",
-                Innhold = "Innhold3"
+                Innhold = "Innhold3",
+                Brukernavn = "TestBruker1"
             };
 
             var svar7 = new Svar
@@ -748,7 +782,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar7",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var svar8 = new Svar
@@ -758,7 +793,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar8",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var svar9 = new Svar
@@ -768,7 +804,8 @@ namespace TestProject1
                 TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
                 Innhold = "Svar9",
                 InnleggId = innlegg3.InnleggId,
-                Innlegg = innlegg3
+                Innlegg = innlegg3,
+                Brukernavn = "TestBruker1"
             };
 
             var nyeSvar3 = new List<Svar>();
@@ -1078,8 +1115,10 @@ namespace TestProject1
             mockHttpContext.Setup(s => s.Session).Returns(mockSession);
             brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
 
+            var bruker = new Bruker { Brukernavn = "Test", Passord = "Test123" };
+
             // Act
-            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as OkObjectResult;
+            var resultat = await brukerController.LoggInn(bruker) as OkObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
@@ -1137,8 +1176,10 @@ namespace TestProject1
             mockHttpContext.Setup(s => s.Session).Returns(mockSession);
             brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
 
+            var bruker = new Bruker { Brukernavn = "Test", Passord = "Test123"};
+
             // Act
-            var resultat = await brukerController.LagBruker(It.IsAny<Bruker>()) as OkObjectResult;
+            var resultat = await brukerController.LagBruker(bruker) as OkObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
@@ -1181,6 +1222,5 @@ namespace TestProject1
             // Assert
             Assert.Equal(_ikkeLoggetInn, mockSession[_loggetInn]);
         }
-
     }
 }

@@ -25,6 +25,7 @@ const ChangeAnswerModal = (props) => {
         innhold: innholdWithoutSpace,
         innleggId: props.innleggId,
         dato: props.svarDato,
+        brukernavn: props.sessionBrukernavn,
       };
       axios
         .post("/endresvar", endretSvar)

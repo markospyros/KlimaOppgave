@@ -9,20 +9,45 @@ import Register from "./pages/Register";
 import SharedLayout from "./pages/SharedLayout";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [sessionBrukernavn, setSessionBrukernavn] = useState(null);
+
+  axios
+    .get("/getsessiondata")
+    .then((res) => {
+      setSessionBrukernavn(res.data);
+    })
+    .catch((error) => {
+      if (error.status.response === 401) {
+        setSessionBrukernavn("");
+      }
+    });
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="login" element={<Login setUser={setUser}></Login>} />
+        <Route
+          path="login"
+          element={<Login setSessionBrukernavn={setSessionBrukernavn}></Login>}
+        />
         <Route
           path="register"
-          element={<Register setUser={setUser}></Register>}
+          element={
+            <Register setSessionBrukernavn={setSessionBrukernavn}></Register>
+          }
         />
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home user={user} />} />
-          <Route path="askquestion" element={<AskQuestion user={user} />} />
-          <Route path="edit/:id" element={<EditQuestion user={user} />} />
+          <Route
+            index
+            element={<Home sessionBrukernavn={sessionBrukernavn} />}
+          />
+          <Route
+            path="askquestion"
+            element={<AskQuestion sessionBrukernavn={sessionBrukernavn} />}
+          />
+          <Route
+            path="edit/:id"
+            element={<EditQuestion sessionBrukernavn={sessionBrukernavn} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

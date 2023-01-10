@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KlimaOppgave.Migrations
 {
     [DbContext(typeof(SporsmalDbContext))]
-    [Migration("20230108162818_InitialCreate")]
+    [Migration("20230110012243_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,9 @@ namespace KlimaOppgave.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Brukernavn")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
 
@@ -66,6 +69,9 @@ namespace KlimaOppgave.Migrations
                     b.Property<int>("SvarId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Brukernavn")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");

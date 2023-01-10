@@ -1,0 +1,58 @@
+2023-01-10T00:58:43.0309843+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T00:58:43.0403383+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T00:58:43.0423623+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T00:58:49.6134757+01:00  [ERR] (node:34216) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (a3a55645)
+2023-01-10T00:58:49.6162836+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:34216) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (09f1e6bc)
+2023-01-10T01:55:38.3295913+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T01:55:38.3475288+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T01:55:38.3505225+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T01:55:42.5672921+01:00  [ERR] (node:30780) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (85586744)
+2023-01-10T01:55:42.5698710+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:30780) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (69e67d7d)
+2023-01-10T02:03:34.5508112+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T02:03:34.5675865+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T02:03:34.5693210+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T02:03:39.2839774+01:00  [ERR] (node:5644) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (03e5100b)
+2023-01-10T02:03:39.2863616+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:5644) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (0e727955)
+2023-01-10T02:04:27.6436631+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T02:04:27.6518349+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T02:04:27.6537756+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T02:04:31.5130288+01:00  [ERR] (node:27816) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (0b09574e)
+2023-01-10T02:04:31.5154993+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:27816) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (ecc16a17)
+2023-01-10T02:07:41.0087122+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T02:07:41.0246956+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T02:07:41.0266137+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T02:07:44.9151085+01:00  [ERR] (node:23760) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (236b47dd)
+2023-01-10T02:07:44.9175149+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:23760) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (8be0afaa)
+2023-01-10T02:23:22.1305616+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T02:23:22.1441633+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T02:23:22.1457612+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T02:23:26.1601209+01:00  [ERR] (node:29164) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (6b626a12)
+2023-01-10T02:23:26.1630025+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:29164) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (95562b78)
+2023-01-10T02:25:30.6553984+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T02:25:30.6677114+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T02:25:30.6694597+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T02:25:34.4794006+01:00  [ERR] (node:34820) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (7971aa00)
+2023-01-10T02:25:34.4822614+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:34820) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (d475b6ee)
+2023-01-10T03:19:00.2602206+01:00 40000077-0006-fc00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T03:19:10.5740620+01:00 40000087-0003-ff00-b63f-84710c7967bb [INF] Bruker kunne ikke lagres! (ccffc630)

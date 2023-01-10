@@ -17,7 +17,7 @@ namespace KlimaOppgave.DAL
 
             var db = serviceScope.ServiceProvider.GetService<SporsmalDbContext>();
 
-            db.Database.EnsureDeleted();
+/*            db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
 
             var innlegg1 = new Innlegg
@@ -151,7 +151,7 @@ namespace KlimaOppgave.DAL
 
             db.Innlegg.Add(innlegg1);
             db.Innlegg.Add(innlegg2);
-            db.Innlegg.Add(innlegg3);
+            db.Innlegg.Add(innlegg3);*/
 
             // lag en påoggingsbruker
             var bruker = new Brukere();

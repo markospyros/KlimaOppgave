@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "../components/Form";
 
-const EditQuestion = ({ user }) => {
+const EditQuestion = ({ sessionBrukernavn }) => {
   let { id } = useParams();
 
   const [post, setPost] = useState();
@@ -85,6 +85,7 @@ const EditQuestion = ({ user }) => {
         timeStamp: post.timeStamp,
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
+        brukernavn: sessionBrukernavn,
       };
 
       axios.post("/endreinnlegg", endretInnlegg);

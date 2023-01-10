@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.Session;
+
 
 namespace KlimaOppgave
 {
@@ -39,13 +41,13 @@ namespace KlimaOppgave
             services.AddDbContext<SporsmalDbContext>(options => options.UseSqlite("Data source=Sporsmal.db"));
             services.AddScoped<IBrukerRepository, BrukerRepository>();
             services.AddScoped<IInnleggRepository, InnleggRepository>();
+            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".AdventureWorks.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(1800);
-                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
             });
-            services.AddDistributedMemoryCache();
 
         }
 
@@ -56,7 +58,7 @@ namespace KlimaOppgave
             {
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/Log.txt");
-                DBInit.Initialize(app);
+                //DBInit.Initialize(app);
             }
             else
             {

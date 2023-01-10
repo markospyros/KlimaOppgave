@@ -61,7 +61,7 @@ namespace KlimaOppgave.Controllers
                     HttpContext.Session.SetString(_loggetInn, "");
                     return BadRequest("Bruker kunne ikke lagres");
                 }
-                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
                 return Ok("Bruker lagret");
             }
             _log.LogInformation("Feil i inputvalidering");
@@ -80,7 +80,7 @@ namespace KlimaOppgave.Controllers
                     HttpContext.Session.SetString(_loggetInn, "");
                     return Ok(false);
                 }
-                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
                 return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering");
@@ -90,6 +90,13 @@ namespace KlimaOppgave.Controllers
         public void LoggUt()
         {
             HttpContext.Session.SetString(_loggetInn, "");
+        }
+
+        [HttpGet]
+        public ActionResult GetSessionData()
+        {
+            var sessionData = HttpContext.Session.GetString(_loggetInn);
+            return Ok(sessionData);
         }
     }
 }

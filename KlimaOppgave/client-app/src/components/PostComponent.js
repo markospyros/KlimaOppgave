@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import ProfileCard from "./ProfileCard";
 
 const PostComponent = (props) => {
   const [visibility, setVisibility] = useState("none");
@@ -22,7 +23,9 @@ const PostComponent = (props) => {
   };
 
   const onHoverPost = () => {
-    setVisibility("block");
+    if (props.brukernavn === props.sessionBrukernavn) {
+      setVisibility("block");
+    }
   };
 
   const onLeavePost = () => {
@@ -38,6 +41,13 @@ const PostComponent = (props) => {
       >
         <div className="row">
           <div className="col-9">
+            <ProfileCard
+              brukernavn={props.brukernavn}
+              picWidth={"50px"}
+              picHeight={"50px"}
+              fontSize={"fs-5 text"}
+              marginBottom={"mb-4"}
+            />
             <h5 className="card-title">{props.tittel}</h5>
           </div>
           <div className={`col-3 text-end d-${visibility}`}>

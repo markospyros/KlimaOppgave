@@ -16,6 +16,8 @@ namespace KlimaOppgave.Models
 
         public string Innhold { get; set; }
 
+        public string Brukernavn { get; set; }
+
         public virtual ICollection<Svar> Svar { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace KlimaOppgave.Models
 
         public string TimeStamp { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
 
+        public string Brukernavn { get; set; }
+
         public int InnleggId { get; set; }
         public virtual Innlegg Innlegg { get; set; }
     }

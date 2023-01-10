@@ -31,7 +31,8 @@ namespace KlimaOppgave.Migrations
                     Dato = table.Column<string>(nullable: true),
                     TimeStamp = table.Column<string>(nullable: true),
                     Tittel = table.Column<string>(nullable: true),
-                    Innhold = table.Column<string>(nullable: true)
+                    Innhold = table.Column<string>(nullable: true),
+                    Brukernavn = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,6 +48,7 @@ namespace KlimaOppgave.Migrations
                     Innhold = table.Column<string>(nullable: true),
                     Dato = table.Column<string>(nullable: true),
                     TimeStamp = table.Column<string>(nullable: true),
+                    Brukernavn = table.Column<string>(nullable: true),
                     InnleggId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

@@ -42,6 +42,9 @@ namespace KlimaOppgave.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Brukernavn")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");
 
@@ -64,6 +67,9 @@ namespace KlimaOppgave.Migrations
                     b.Property<int>("SvarId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Brukernavn")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Dato")
                         .HasColumnType("TEXT");

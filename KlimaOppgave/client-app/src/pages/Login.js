@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AccountForm from "../components/AccountForm";
 
-const Login = () => {
+const Login = ({ setSessionBrukernavn }) => {
   const [brukernavn, setBrukernavn] = useState("");
   const [passord, setPassord] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -57,6 +57,19 @@ const Login = () => {
                 <span className="visually-hidden"></span>
               </div>
             );
+
+            axios
+              .get("/getsessiondata")
+              .then((res) => {
+                setSessionBrukernavn(res.data);
+              })
+              .catch((error) => {
+                if (error.status.response === 401) {
+                  setSessionBrukernavn("");
+                  navigate("/login");
+                }
+              });
+
             setTimeout(() => {
               navigate("/");
             }, 1000);

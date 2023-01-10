@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../components/Form";
 
-const AskQuestion = ({ user }) => {
+const AskQuestion = ({ sessionBrukernavn }) => {
   const [tittel, setTittel] = useState("");
   const [innhold, setInnhold] = useState("");
   const [buttonStatus, setButtonStatus] = useState("Send inn");
@@ -64,6 +64,7 @@ const AskQuestion = ({ user }) => {
       const sporsmal = {
         tittel: tittelWithoutSpace,
         innhold: innholdWithoutSpace,
+        brukernavn: sessionBrukernavn,
       };
 
       axios.post("/legginnlegg", sporsmal).catch((error) => {

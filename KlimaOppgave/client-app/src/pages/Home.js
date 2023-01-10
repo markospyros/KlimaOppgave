@@ -5,7 +5,7 @@ import AnswerComponent from "../components/AnswerComponent";
 import PostComponent from "../components/PostComponent";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ user }) => {
+const Home = ({ sessionBrukernavn }) => {
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
@@ -87,8 +87,8 @@ const Home = ({ user }) => {
           id={post.innleggId}
           tittel={post.tittel}
           innhold={post.innhold}
-          user={user}
-          author={post.bruker}
+          sessionBrukernavn={sessionBrukernavn}
+          brukernavn={post.brukernavn}
           dato={post.dato}
           deletePost={deletePost}
         />
@@ -99,7 +99,8 @@ const Home = ({ user }) => {
                 svarId={svar.svarId}
                 svarInnhold={svar.innhold}
                 innleggId={svar.innleggId}
-                user={user}
+                sessionBrukernavn={sessionBrukernavn}
+                brukernavn={svar.brukernavn}
                 svarDato={svar.dato}
                 updateAnswer={updateAnswer}
                 deleteAnswer={deleteAnswer}
@@ -109,7 +110,7 @@ const Home = ({ user }) => {
         </div>
         <div>
           <AnswerInput
-            user={user}
+            sessionBrukernavn={sessionBrukernavn}
             innleggId={post.innleggId}
             addAnswer={addAnswer}
           />
