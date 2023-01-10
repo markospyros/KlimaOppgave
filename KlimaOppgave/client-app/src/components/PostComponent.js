@@ -25,6 +25,8 @@ const PostComponent = (props) => {
   const onHoverPost = () => {
     if (props.brukernavn === props.sessionBrukernavn) {
       setVisibility("block");
+    } else if (props.sessionBrukernavn === "Admin") {
+      setVisibility("block");
     }
   };
 

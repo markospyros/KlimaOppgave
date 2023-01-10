@@ -5,6 +5,7 @@ using KlimaOppgave.Models;
 using KundeAppTest;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
@@ -1247,6 +1248,48 @@ namespace TestProject1
             // Assert 
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
             Assert.Equal("Feil i inputvalidering på server", resultat.Value);
+        }
+
+
+        [Fact]
+        public void GetSessionDataReturnSessionData()
+        {
+            // Arrange
+            
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+
+            // Act
+            var result = brukerController.GetSessionData() as OkObjectResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
+            Assert.Equal(result.Value, result.Value);
+        }
+
+        [Fact]
+        public void GetSessionDataSessionReturnNull()
+        {
+            // Arrange
+
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            mockSession[_loggetInn] = null;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            // Act
+            var result = brukerController.GetSessionData() as OkObjectResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
+            Assert.Null(result.Value);
         }
 
         [Fact]

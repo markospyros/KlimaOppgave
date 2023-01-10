@@ -12,6 +12,8 @@ const AnswerComponent = (props) => {
   const onHoverAnswer = () => {
     if (props.sessionBrukernavn === props.brukernavn) {
       setVisibility("block");
+    } else if (props.sessionBrukernavn === "Admin") {
+      setVisibility("block");
     }
   };
 

@@ -106,7 +106,8 @@ namespace KlimaOppgave.Controllers
         public ActionResult GetSessionData()
         {
             var sessionData = HttpContext.Session.GetString(_loggetInn);
-            return Ok(sessionData);
+            
+            return Ok(sessionData);           
         }
     }
 }
