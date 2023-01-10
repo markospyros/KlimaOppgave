@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import ChangeAnswerModal from "./ChangeAnswerModal";
+import DeleteModal from "./DeleteModal";
 import ProfileCard from "./ProfileCard";
 
 const AnswerComponent = (props) => {
   const [visibility, setVisibility] = useState("none");
-  const [showModal, setShowModal] = useState(false);
+  const [showModalChange, setShowModalChange] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
 
   const onHoverAnswer = () => {
     if (props.sessionBrukernavn === props.brukernavn) {
@@ -21,12 +23,20 @@ const AnswerComponent = (props) => {
     setVisibility("none");
   };
 
-  const openModal = () => {
-    setShowModal(true);
+  const openModalChange = () => {
+    setShowModalChange(true);
   };
 
-  const closeModal = () => {
-    setShowModal(false);
+  const closeModalChange = () => {
+    setShowModalChange(false);
+  };
+
+  const openModalDelete = () => {
+    setShowModalDelete(true);
+  };
+
+  const closeModalDelete = () => {
+    setShowModalDelete(false);
   };
 
   const navigate = useNavigate();
@@ -65,13 +75,13 @@ const AnswerComponent = (props) => {
             size={20}
             className="mx-3"
             style={{ cursor: "pointer" }}
-            onClick={openModal}
+            onClick={openModalChange}
           />
           <BiTrash
             color="red"
             size={20}
             style={{ cursor: "pointer" }}
-            onClick={() => onDelete(props.svarId)}
+            onClick={openModalDelete}
           />
         </div>
         <div className="text-end text-secondary">{props.svarDato}</div>
@@ -82,9 +92,15 @@ const AnswerComponent = (props) => {
         svarInnhold={props.svarInnhold}
         svarDato={props.svarDato}
         innleggId={props.innleggId}
-        showModal={showModal}
+        showModalChange={showModalChange}
         updateAnswer={props.updateAnswer}
-        closeModal={closeModal}
+        closeModalChange={closeModalChange}
+      />
+      <DeleteModal
+        sentence="Er du sikker på at du vil slette svaret ditt?"
+        showModalDelete={showModalDelete}
+        closeModalDelete={closeModalDelete}
+        onDelete={() => onDelete(props.svarId)}
       />
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 const Form = (props) => {
   return (
-    <form>
+    <div>
       <h2>{props.pageTitle}</h2>
       <div className="mt-3">
         <label className="form-label">Tittel</label>
@@ -44,7 +44,7 @@ const Form = (props) => {
           {props.buttonTitle}
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

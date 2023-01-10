@@ -31,7 +31,7 @@ const ChangeAnswerModal = (props) => {
         .post("/endresvar", endretSvar)
         .then(() => {
           props.updateAnswer(endretSvar);
-          props.closeModal();
+          props.closeModalChange();
         })
         .catch((error) => {
           if (error.response.status === 401) {
@@ -45,7 +45,11 @@ const ChangeAnswerModal = (props) => {
 
   return (
     <>
-      <Modal show={props.showModal} onHide={props.closeModal} animation={false}>
+      <Modal
+        show={props.showModalChange}
+        onHide={props.closeModalChange}
+        animation={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Endre svar</Modal.Title>
         </Modal.Header>
@@ -58,7 +62,7 @@ const ChangeAnswerModal = (props) => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={props.closeModal}>
+          <Button variant="secondary" onClick={props.closeModalChange}>
             Avbryt
           </Button>
           <Button variant="primary" onClick={endreSvar}>

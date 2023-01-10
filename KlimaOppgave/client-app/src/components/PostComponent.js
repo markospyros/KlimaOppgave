@@ -2,10 +2,20 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "./DeleteModal";
 import ProfileCard from "./ProfileCard";
 
 const PostComponent = (props) => {
   const [visibility, setVisibility] = useState("none");
+  const [showModalDelete, setShowModalDelete] = useState(false);
+
+  const openModalDelete = () => {
+    setShowModalDelete(true);
+  };
+
+  const closeModalDelete = () => {
+    setShowModalDelete(false);
+  };
 
   const navigate = useNavigate();
 
@@ -64,7 +74,7 @@ const PostComponent = (props) => {
               color="red"
               size={20}
               style={{ cursor: "pointer" }}
-              onClick={() => onDelete(props.id)}
+              onClick={openModalDelete}
             />
           </div>
         </div>
@@ -74,6 +84,12 @@ const PostComponent = (props) => {
             <p className="card-text text-end text-secondary">{props.dato}</p>
           </div>
         </div>
+        <DeleteModal
+          sentence="Er du sikker på at du vil slette innlegget ditt?"
+          showModalDelete={showModalDelete}
+          closeModalDelete={closeModalDelete}
+          onDelete={() => onDelete(props.id)}
+        />
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AnswerInput = (props) => {
   const [svarText, setSvarText] = useState("");
-  const [buttonState, setButtonState] = useState("btn-secondary disabled");
+  const [buttonState, setButtonState] = useState("btn-dark");
   const [inputState, setInputState] = useState("border-secondary");
   const [errorMessageStatus, setErrorMessageStatus] = useState("none");
 
@@ -26,7 +26,7 @@ const AnswerInput = (props) => {
     const svarTextWithoutSpace = svarText.trim();
 
     if (svarTextWithoutSpace.length === 0) {
-      setButtonState("btn-secondary disabled");
+      setButtonState("btn-dark");
     }
   };
 
@@ -38,7 +38,7 @@ const AnswerInput = (props) => {
     setSvarText(inputValue);
 
     if (inputValue.trim().length === 0) {
-      setButtonState("btn-secondary disabled");
+      setButtonState("btn-dark");
     } else {
       setButtonState("btn-primary");
     }

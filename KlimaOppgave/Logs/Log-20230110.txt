@@ -253,3 +253,140 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 5: 'database is
 2023-01-10T16:06:14.9384227+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:30120) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
  (8b3a78ae)
+2023-01-10T16:21:56.0468013+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T16:21:56.0727300+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T16:21:56.0767799+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T16:22:06.8461855+01:00  [ERR] (node:28532) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (a7dcb1b6)
+2023-01-10T16:22:06.8519851+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:28532) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (8f59734d)
+2023-01-10T17:42:01.4764023+01:00 40000042-0003-ff00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T17:42:08.8576529+01:00 4000005d-0004-fe00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-10T18:01:55.9682943+01:00 4000001f-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:02:11.1744503+01:00 40000018-0005-f900-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:04:43.7405512+01:00 4000004e-0000-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:04:44.4249663+01:00 4000001c-0002-ff00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:04:44.6098149+01:00 40000084-0004-fe00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:04:47.5552641+01:00 4000005d-0004-fa00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:04:47.7558230+01:00 40000052-0000-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:06:35.5911857+01:00 4000002b-0007-fa00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-10T18:08:59.4254975+01:00 40000054-0005-fb00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:09:16.8004936+01:00 40000063-0004-fa00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:10:05.4594613+01:00 4000005c-0000-fd00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:10:09.4166500+01:00 40000060-0003-fe00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:11:20.7482594+01:00 40000056-0005-fb00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:11:21.9939182+01:00 4000005e-0000-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:11:22.5290847+01:00 40000062-0003-fe00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:11:22.6706672+01:00 40000064-0003-fe00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:11:22.8156091+01:00 4000002d-0001-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:11:22.9799246+01:00 40000033-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:12:33.0301763+01:00 40000035-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:12:35.4240528+01:00 40000024-0005-f900-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine..
+ ---> System.Net.Sockets.SocketException (10053): An established connection was aborted by the software in your host machine.
+   --- End of inner exception stack trace ---
+   at System.Net.WebSockets.ManagedWebSocket.HandleReceivedPingPongAsync(MessageHeader header, CancellationToken cancellationToken)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-01-10T18:12:35.4326588+01:00 40000024-0005-f900-b63f-84710c7967bb [WRN] The response has already started, the error page middleware will not be executed. (e1dd4c0d)
+2023-01-10T18:12:35.4743719+01:00 40000024-0005-f900-b63f-84710c7967bb [ERR] Connection ID ""17942340937724198947"", Request ID ""40000024-0005-f900-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine..
+ ---> System.Net.Sockets.SocketException (10053): An established connection was aborted by the software in your host machine.
+   --- End of inner exception stack trace ---
+   at System.Net.WebSockets.ManagedWebSocket.HandleReceivedPingPongAsync(MessageHeader header, CancellationToken cancellationToken)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Builder.Extensions.MapWhenMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2023-01-10T18:13:13.4141556+01:00 4000006a-0003-fe00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:16:13.2578380+01:00 40000039-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:17:03.4289153+01:00 40000031-0001-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:17:05.7274887+01:00 40000026-0008-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine..
+ ---> System.Net.Sockets.SocketException (10053): An established connection was aborted by the software in your host machine.
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnection.ReadBufferedAsyncCore(Memory`1 destination)
+   at System.Net.Http.HttpConnection.RawConnectionStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken, Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Builder.Extensions.MapWhenMiddleware.Invoke(HttpContext context)
+2023-01-10T18:17:05.7481455+01:00 40000026-0008-ff00-b63f-84710c7967bb [WRN] The response has already started, the error page middleware will not be executed. (e1dd4c0d)
+2023-01-10T18:17:05.7711964+01:00 40000026-0008-ff00-b63f-84710c7967bb [ERR] Connection ID ""18374686514836668453"", Request ID ""40000026-0008-ff00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.AggregateException: One or more errors occurred. (The remote party closed the WebSocket connection without completing the close handshake.)
+ ---> System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+ ---> System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine..
+ ---> System.Net.Sockets.SocketException (10053): An established connection was aborted by the software in your host machine.
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnection.ReadBufferedAsyncCore(Memory`1 destination)
+   at System.Net.Http.HttpConnection.RawConnectionStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)
+   at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken, Boolean throwOnPrematureClosure)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TWebSocketReceiveResultGetter,TWebSocketReceiveResult](Memory`1 payloadBuffer, CancellationToken cancellationToken, TWebSocketReceiveResultGetter resultGetter)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PumpWebSocket(WebSocket source, WebSocket destination, Int32 bufferSize, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.AcceptProxyWebSocketRequest(HttpContext context, Uri destinationUri, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.SpaServices.Extensions.Proxy.SpaProxy.PerformProxyRequest(HttpContext context, HttpClient httpClient, Task`1 baseUriTask, CancellationToken applicationStoppingToken, Boolean proxy404s)
+   at Microsoft.AspNetCore.Builder.SpaProxyingExtensions.<>c__DisplayClass2_0.<<UseProxyToSpaDevelopmentServer>b__0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Builder.Extensions.MapWhenMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2023-01-10T18:17:40.9962094+01:00 4000003f-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:17:53.6363732+01:00 40000035-0001-fd00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:18:08.2468417+01:00 40000041-0002-fd00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:18:08.6470389+01:00 40000060-0005-fb00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:18:09.0895991+01:00 40000037-0001-fd00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
+2023-01-10T18:18:13.2380216+01:00 40000043-0002-fd00-b63f-84710c7967bb [INF] Dette brukernavnet er allerede i bruk. (17411f53)
+2023-01-10T18:18:30.5242365+01:00 40000004-0003-fc00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-10T18:18:37.9548377+01:00 40000062-0005-fb00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)

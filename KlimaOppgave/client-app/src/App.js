@@ -35,7 +35,10 @@ const App = () => {
             <Register setSessionBrukernavn={setSessionBrukernavn}></Register>
           }
         />
-        <Route path="/" element={<SharedLayout />}>
+        <Route
+          path="/"
+          element={<SharedLayout sessionBrukernavn={sessionBrukernavn} />}
+        >
           <Route
             index
             element={<Home sessionBrukernavn={sessionBrukernavn} />}

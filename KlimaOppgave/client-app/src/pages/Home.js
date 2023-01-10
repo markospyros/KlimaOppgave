@@ -4,6 +4,7 @@ import AnswerInput from "../components/AnswerInput";
 import AnswerComponent from "../components/AnswerComponent";
 import PostComponent from "../components/PostComponent";
 import { useNavigate } from "react-router-dom";
+import AskQuestionButton from "../components/AskQuestionButton";
 
 const Home = ({ sessionBrukernavn }) => {
   const [posts, setPosts] = useState([]);
@@ -119,7 +120,12 @@ const Home = ({ sessionBrukernavn }) => {
     );
   });
 
-  return <div>{formatPosts}</div>;
+  return (
+    <div>
+      <AskQuestionButton />
+      <div>{formatPosts}</div>
+    </div>
+  );
 };
 
 export default Home;

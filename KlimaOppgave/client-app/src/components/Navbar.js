@@ -1,13 +1,15 @@
 import axios from "axios";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import ProfileCard from "./ProfileCard";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const navigate = useNavigate();
 
   const loggut = () => {
     axios.get("/loggut").then(navigate("/login"));
   };
+  console.log(props.brukernavn);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -21,9 +23,11 @@ const Navbar = () => {
             style={{ marginLeft: "auto" }}
           >
             <li className="nav-item">
-              <NavLink className="btn btn-primary" to="askquestion">
-                Spør
-              </NavLink>
+              <ProfileCard
+                brukernavn={props.brukernavn}
+                picWidth="40px"
+                picHeight="40px"
+              />
             </li>
             <li className="nav-item">
               <button className="btn btn-danger" onClick={loggut}>

@@ -15,9 +15,11 @@ const AccountForm = (props) => {
                 <label className="form-label">Brukernavn</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control form-control-outline ${props.brukernavnInputState} border-3 shadow-none`}
                   value={props.brukernavn}
                   onChange={props.onChangeBrukernavn}
+                  onFocus={props.onFocusBrukerInput}
+                  onBlur={props.onBlurBrukerInput}
                 />
               </div>
               <div className={`invalid-feedback d-block`}>
@@ -27,9 +29,11 @@ const AccountForm = (props) => {
                 <label className="form-label">Passord</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className={`form-control form-control-outline ${props.passordInputState} border-3 shadow-none`}
                   value={props.passord}
                   onChange={props.onChangePassord}
+                  onFocus={props.onFocusPassordInput}
+                  onBlur={props.onBlurPassordInput}
                 />
               </div>
               <div className={`invalid-feedback d-block`}>

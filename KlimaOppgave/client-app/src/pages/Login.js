@@ -10,8 +10,28 @@ const Login = ({ setSessionBrukernavn }) => {
   const [brukernavnErrorMessage, setBrukernavnErrorMessage] = useState("");
   const [passordErrorMessage, setPassordErrorMessage] = useState("");
   const [buttonStatus, setButtonStatus] = useState("Logg inn");
+  const [brukernavnInputState, setBrukernavnInputState] =
+    useState("border-secondary");
+  const [passordInputState, setPassordInputState] =
+    useState("border-secondary");
 
   const navigate = useNavigate();
+
+  const onFocusBrukerInput = () => {
+    setBrukernavnInputState("border-primary");
+  };
+
+  const onBlurBrukerInput = () => {
+    setBrukernavnInputState("border-secondary");
+  };
+
+  const onFocusPassordInput = () => {
+    setPassordInputState("border-primary");
+  };
+
+  const onBlurPassordInput = () => {
+    setPassordInputState("border-secondary");
+  };
 
   const onChangeBrukernavn = (event) => {
     const inputValue = event.target.value;
@@ -80,15 +100,19 @@ const Login = ({ setSessionBrukernavn }) => {
           }
         })
         .catch((error) => {
-          setErrorMessage(error.response.data);
+          setErrorMessage(
+            "Ugyldig brukernavn eller passord. Vennligst prøv igjen."
+          );
         });
     }
 
     if (brukernavn === "") {
       setBrukernavnErrorMessage("Brukernavn må fylles ut");
+      setBrukernavnInputState("border-danger");
     }
     if (passord === "") {
       setPassordErrorMessage("Passord må fylles ut");
+      setPassordInputState("border-danger");
     }
 
     event.preventDefault();
@@ -109,6 +133,12 @@ const Login = ({ setSessionBrukernavn }) => {
         text="Har du ikke konto? Klikk her"
         errorMessage={errorMessage}
         buttonStatus={buttonStatus}
+        onFocusBrukerInput={onFocusBrukerInput}
+        onBlurBrukerInput={onBlurBrukerInput}
+        onFocusPassordInput={onFocusPassordInput}
+        onBlurPassordInput={onBlurPassordInput}
+        brukernavnInputState={brukernavnInputState}
+        passordInputState={passordInputState}
       />
     </>
   );
