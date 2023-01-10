@@ -54,15 +54,25 @@ namespace KlimaOppgave.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool returOK = await _db.LagBruker(bruker);
-                if (!returOK)
+                int returTall = await _db.LagBruker(bruker);
+                
+                if (returTall == 0)
+                {
+                    HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
+                    return Ok("Bruker lagret");
+                }
+                if (returTall == 1)
+                {
+                    _log.LogInformation("Dette brukernavnet er allerede i bruk.");
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return BadRequest("Dette brukernavnet er allerede i bruk.");
+                }
+                if (returTall == 2)
                 {
                     _log.LogInformation("Bruker kunne ikke lagres!");
                     HttpContext.Session.SetString(_loggetInn, "");
                     return BadRequest("Bruker kunne ikke lagres");
                 }
-                HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
-                return Ok("Bruker lagret");
             }
             _log.LogInformation("Feil i inputvalidering");
             return BadRequest("Feil i inputvalidering på server");

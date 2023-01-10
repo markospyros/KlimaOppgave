@@ -43,7 +43,7 @@ namespace KlimaOppgave.DAL
         }
 
         [HttpPost]
-        public async Task<bool> LagBruker(Bruker bruker)
+        public async Task<int> LagBruker(Bruker bruker)
         {
             try
             {
@@ -63,15 +63,15 @@ namespace KlimaOppgave.DAL
 
                     // _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
 
-                    return true;
+                    return 0;
                 }
 
-                return false;
+                return 1;
             }
             catch (Exception e)
             {
                 _log.LogInformation(e.Message);
-                return false;
+                return 2;
             }
         }
 

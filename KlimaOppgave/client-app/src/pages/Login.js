@@ -75,7 +75,7 @@ const Login = ({ setSessionBrukernavn }) => {
             }, 1000);
           } else {
             setErrorMessage(
-              "Kunne ikke logge inn med det brukenavnet. Vennligst prøv igjen."
+              "Ugyldig brukernavn eller passord. Vennligst prøv igjen."
             );
           }
         })

@@ -1168,7 +1168,7 @@ namespace TestProject1
         [Fact]
         public async Task LagBrukerOK()
         {
-            mockRep2.Setup(k => k.LagBruker(It.IsAny<Bruker>())).ReturnsAsync(true);
+            mockRep2.Setup(k => k.LagBruker(It.IsAny<Bruker>())).ReturnsAsync(0);
 
             var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
 
@@ -1184,6 +1184,48 @@ namespace TestProject1
             // Assert 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal("Bruker lagret", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagBrukerTattBruker()
+        {
+            mockRep2.Setup(k => k.LagBruker(It.IsAny<Bruker>())).ReturnsAsync(1);
+
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            var bruker = new Bruker { Brukernavn = "Test", Passord = "Test123" };
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            // Act
+            var resultat = await brukerController.LagBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            // Assert 
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Dette brukernavnet er allerede i bruk.", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagBrukerIkkeOK()
+        {
+            mockRep2.Setup(k => k.LagBruker(It.IsAny<Bruker>())).ReturnsAsync(2);
+
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            var bruker = new Bruker { Brukernavn = "Test", Passord = "Test123" };
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            // Act
+            var resultat = await brukerController.LagBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            // Assert 
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Bruker kunne ikke lagres", resultat.Value);
         }
 
         [Fact]

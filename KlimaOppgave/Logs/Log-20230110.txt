@@ -56,3 +56,22 @@
  (d475b6ee)
 2023-01-10T03:19:00.2602206+01:00 40000077-0006-fc00-b63f-84710c7967bb [INF] Feil i inputvalidering (06f553d7)
 2023-01-10T03:19:10.5740620+01:00 40000087-0003-ff00-b63f-84710c7967bb [INF] Bruker kunne ikke lagres! (ccffc630)
+2023-01-10T11:46:08.8449456+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T11:46:08.8562654+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T11:46:08.8579363+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T11:46:15.6083919+01:00  [ERR] (node:6512) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (1c7f0c45)
+2023-01-10T11:46:15.6111698+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:6512) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (d268df23)
+2023-01-10T11:46:38.6960880+01:00 4000005d-0004-fb00-b63f-84710c7967bb [INF] Innloggingen feilet for bruker (13b46012)
+2023-01-10T11:47:50.9498130+01:00 40000032-0005-f900-b63f-84710c7967bb [INF] Bruker kunne ikke lagres! (ccffc630)
+2023-01-10T11:58:39.7834879+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-01-10T11:58:39.7914862+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-01-10T11:58:39.7932821+01:00  [INF] Content root path: "C:\Users\marko\source\repos\KlimaOppgave\KlimaOppgave" (b5d60022)
+2023-01-10T11:58:43.7338110+01:00  [ERR] (node:16580) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (85f9a430)
+2023-01-10T11:58:43.7372594+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:16580) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (00da1450)
+2023-01-10T12:00:08.4012463+01:00 400000f9-0003-fe00-b63f-84710c7967bb [INF] Marko er tatt (b8e363a8)

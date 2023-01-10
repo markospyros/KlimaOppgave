@@ -6,7 +6,7 @@ namespace KlimaOppgave.DAL
 {
     public interface IBrukerRepository
     {
-        Task<bool> LagBruker(Bruker bruker);
+        Task<int> LagBruker(Bruker bruker);
 
         Task<bool> LoggInn(Bruker bruker);
     }
