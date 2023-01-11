@@ -7,21 +7,29 @@ import { useNavigate } from "react-router-dom";
 import AskQuestionButton from "../components/AskQuestionButton";
 
 const Home = ({ sessionBrukernavn }) => {
+  // Lager et tomt array for innlegg
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Kaller inn hentinnlegg fra server,
+    // henter dataene og oppdaterer posts
     axios
       .get("/hentinnlegg")
       .then((response) => setPosts(response.data))
       .catch((error) => {
+        // Hvis ikke bruker er logget inn
+        // da hentes ikke noe data
+        // og navigerer til login page
         if (error.response.status === 401) {
           navigate("/login");
         }
       });
   }, []);
 
+  // Dataene våre har et attribute som heter timestamp
+  // Via den så kan vi sortere posts basert på tiden
   const sortBasedOnTime = () => {
     for (let i = 0; i < posts.length - 1; i++) {
       if (posts[i].timeStamp < posts[i + 1].timeStamp) {
@@ -36,8 +44,10 @@ const Home = ({ sessionBrukernavn }) => {
     return posts;
   };
 
+  // Kaller funksjonen
   sortBasedOnTime();
 
+  // legger til ny svar til post array
   const addAnswer = (newAnswer, postId) => {
     const updatedPosts = posts.map((post) => {
       if (post.innleggId === postId) {
@@ -45,9 +55,11 @@ const Home = ({ sessionBrukernavn }) => {
       }
       return post;
     });
+    // Oppdaterer state til posts
     setPosts(updatedPosts);
   };
 
+  // Oppdaterer svar
   const updateAnswer = (updatedAnswer) => {
     const updatedPosts = posts.map((post) => {
       if (post.innleggId === updatedAnswer.innleggId) {
@@ -60,9 +72,12 @@ const Home = ({ sessionBrukernavn }) => {
       }
       return post;
     });
+
+    // Oppdaterer state til posts
     setPosts(updatedPosts);
   };
 
+  // Sletter svar
   const deleteAnswer = (id) => {
     const updatedPosts = posts.map((post) => {
       post.svar = post.svar.filter((svar) => svar.svarId !== id);
@@ -71,12 +86,16 @@ const Home = ({ sessionBrukernavn }) => {
     setPosts(updatedPosts);
   };
 
+  // Sletter innlegg
   const deletePost = (id) => {
     const updatedPosts = posts.filter((post) => post.innleggId !== id);
 
     setPosts(updatedPosts);
   };
 
+  // Her formater funksjonen de datene
+  // fra server til de komponentene
+  // og gir dem variabler
   const formatPosts = posts.map((post) => {
     return (
       <div

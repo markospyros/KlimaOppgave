@@ -67,6 +67,7 @@ const AskQuestion = ({ sessionBrukernavn }) => {
         brukernavn: sessionBrukernavn,
       };
 
+      // sender sporsmal objektet til serveren via legginnlegg
       axios.post("/legginnlegg", sporsmal).catch((error) => {
         if (error.response.status === 401) {
           navigate("/login");
@@ -82,6 +83,8 @@ const AskQuestion = ({ sessionBrukernavn }) => {
         </div>
       );
 
+      // Vente 1 sekund før vi navigerer til hovedsiden
+      // slik at det er tid med at dataene kommer inn
       setTimeout(() => {
         navigate("/");
       }, 1000);

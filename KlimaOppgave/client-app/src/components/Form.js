@@ -1,6 +1,7 @@
 import React from "react";
 
 const Form = (props) => {
+  //Form-komponenten
   return (
     <div>
       <h2>{props.pageTitle}</h2>

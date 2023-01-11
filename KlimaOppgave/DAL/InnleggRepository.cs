@@ -56,7 +56,7 @@ namespace KlimaOppgave.DAL
         }
 
         [HttpGet("{id}")]
-        public async Task<Innlegg> HentEnInnlegg(int id)
+        public async Task<Innlegg> HentEtInnlegg(int id)
         {
             try
             {

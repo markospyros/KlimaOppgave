@@ -4,35 +4,48 @@ import { useNavigate } from "react-router-dom";
 import AccountForm from "../components/AccountForm";
 
 const Login = ({ setSessionBrukernavn }) => {
+  //State på verdien av brukernavn og passord-inputfeltet
   const [brukernavn, setBrukernavn] = useState("");
   const [passord, setPassord] = useState("");
+
+  //State på feilmeldingene
   const [errorMessage, setErrorMessage] = useState("");
   const [brukernavnErrorMessage, setBrukernavnErrorMessage] = useState("");
   const [passordErrorMessage, setPassordErrorMessage] = useState("");
+
+  //State på teksten i Logg inn knappen
   const [buttonStatus, setButtonStatus] = useState("Logg inn");
+
+  //State til bootstrap-klassene til brukernavn-inputfeltet og passord-inputfeltet
   const [brukernavnInputState, setBrukernavnInputState] =
     useState("border-secondary");
   const [passordInputState, setPassordInputState] =
     useState("border-secondary");
 
+  //Brukes til navigasjon
   const navigate = useNavigate();
 
+  //Når jeg klikke på inputfeltet så endrer kanten til inputfeltet til blå
   const onFocusBrukerInput = () => {
     setBrukernavnInputState("border-primary");
   };
 
+  //Når jeg klikker bort så blir den igjen til grått
   const onBlurBrukerInput = () => {
     setBrukernavnInputState("border-secondary");
   };
 
+  //Når jeg klikke på inputfeltet så endrer kanten til inputfeltet til blå
   const onFocusPassordInput = () => {
     setPassordInputState("border-primary");
   };
 
+  //Når jeg klikker bort så blir den igjen til grått
   const onBlurPassordInput = () => {
     setPassordInputState("border-secondary");
   };
 
+  //Sjekker inputvalidering
   const onChangeBrukernavn = (event) => {
     const inputValue = event.target.value;
     setBrukernavn(inputValue);
@@ -62,12 +75,17 @@ const Login = ({ setSessionBrukernavn }) => {
   };
 
   const login = async (event) => {
+    // Lager et objekt som inneholder brukernavn og passord
+    // og skal sendes til server
     const user = { brukernavn: brukernavn, passord: passord };
 
+    // Sjekker om brukernavn og input feltet er tomt
     if (brukernavn !== "" && passord !== "") {
+      // Sender POST metode til logginn
       axios
         .post("/logginn", user)
         .then((res) => {
+          // Hvis res.data er true så er det slikt at man logger inn vellyket
           if (res.data === true) {
             setButtonStatus(
               <div
@@ -78,6 +96,8 @@ const Login = ({ setSessionBrukernavn }) => {
               </div>
             );
 
+            //Henter data til sessionen
+            // slikt at jeg får sessionBrukernavn
             axios
               .get("/getsessiondata")
               .then((res) => {
@@ -86,26 +106,23 @@ const Login = ({ setSessionBrukernavn }) => {
               .catch((error) => {
                 if (error.status.response === 401) {
                   setSessionBrukernavn("");
-                  navigate("/login");
                 }
               });
 
+            // Venter 1 sekund med å navigere til hovedsiden
+            // slik at dataene kan lastes inn
             setTimeout(() => {
               navigate("/");
             }, 1000);
-          } else {
-            setErrorMessage(
-              "Ugyldig brukernavn eller passord. Vennligst prøv igjen."
-            );
           }
         })
         .catch((error) => {
-          setErrorMessage(
-            "Ugyldig brukernavn eller passord. Vennligst prøv igjen."
-          );
+          setErrorMessage(error.response.data);
         });
     }
 
+    // Hvis brukernavn er tom da oppdateres
+    // state til de error-variablene
     if (brukernavn === "") {
       setBrukernavnErrorMessage("Brukernavn må fylles ut");
       setBrukernavnInputState("border-danger");
@@ -118,6 +135,8 @@ const Login = ({ setSessionBrukernavn }) => {
     event.preventDefault();
   };
 
+  // Sender de nødvendige variablene til
+  // AccountForm-komponenten
   return (
     <>
       <AccountForm

@@ -9,10 +9,12 @@ const PostComponent = (props) => {
   const [visibility, setVisibility] = useState("none");
   const [showModalDelete, setShowModalDelete] = useState(false);
 
+  //show modal
   const openModalDelete = () => {
     setShowModalDelete(true);
   };
 
+  //close modal
   const closeModalDelete = () => {
     setShowModalDelete(false);
   };
@@ -20,9 +22,11 @@ const PostComponent = (props) => {
   const navigate = useNavigate();
 
   const onEdit = (id) => {
+    // sender post id til den edit pagen
     navigate(`/edit/${id}`);
   };
 
+  //slette innlegg
   const onDelete = (id) => {
     axios.delete(`/slettinnlegg/${id}`).catch((error) => {
       if (error.response.status === 401) {
@@ -33,16 +37,25 @@ const PostComponent = (props) => {
   };
 
   const onHoverPost = () => {
+    // Hvis brukernavn (attributet til innlegget)
+    // er lik sessionBrukernavn altså (brukeren vi logger inn som)
+    // vises redigerings- og slett ikoner
     if (props.brukernavn === props.sessionBrukernavn) {
       setVisibility("block");
-    } else if (props.sessionBrukernavn === "Admin") {
+    }
+    // Hvis bruker er Admin så vises de uansett
+    else if (props.sessionBrukernavn === "Admin") {
       setVisibility("block");
     }
   };
 
+  // Når jeg forlater elementet som forsvinner ikonene
   const onLeavePost = () => {
     setVisibility("none");
   };
+
+  // Det skal vises et modal som skal
+  // skal slette innlegget
 
   return (
     <>

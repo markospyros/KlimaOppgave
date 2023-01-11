@@ -13,8 +13,8 @@ const DeleteModal = (props) => {
         onHide={props.closeModalDelete}
         animation={false}
       >
-        <Modal.Body closeButton>
-          <Modal.Title>{props.sentence}</Modal.Title>
+        <Modal.Body>
+          <div className="fs-5 text">{props.sentence}</div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.closeModalDelete}>

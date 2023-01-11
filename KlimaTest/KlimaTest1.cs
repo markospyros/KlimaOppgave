@@ -420,7 +420,7 @@ namespace TestProject1
         }
 
         [Fact]
-        public async Task HentEnInnleggLoggetInnOK()
+        public async Task HentEtInnleggLoggetInnOK()
         {
             // Arrange
             var innlegg1 = new Innlegg
@@ -473,7 +473,7 @@ namespace TestProject1
 
             innlegg1.Svar = nyeSvar1;
 
-            mockRep.Setup(k => k.HentEnInnlegg(It.IsAny<int>())).ReturnsAsync(innlegg1);
+            mockRep.Setup(k => k.HentEtInnlegg(It.IsAny<int>())).ReturnsAsync(innlegg1);
 
             var innleggController = new InnleggController(mockRep.Object, mockLog.Object);
 
@@ -482,7 +482,7 @@ namespace TestProject1
             innleggController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await innleggController.HentEnInnlegg(It.IsAny<int>()) as OkObjectResult;
+            var resultat = await innleggController.HentEtInnlegg(It.IsAny<int>()) as OkObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
@@ -490,11 +490,11 @@ namespace TestProject1
         }
 
         [Fact]
-        public async Task HentEnInnleggLoggetInnIkkeOK()
+        public async Task HentEtInnleggLoggetInnIkkeOK()
         {
             // Arrange
 
-            mockRep.Setup(k => k.HentEnInnlegg(It.IsAny<int>())).ReturnsAsync(() => null); // merk denne null setting!
+            mockRep.Setup(k => k.HentEtInnlegg(It.IsAny<int>())).ReturnsAsync(() => null); // merk denne null setting!
 
             var innleggController = new InnleggController(mockRep.Object, mockLog.Object);
 
@@ -503,7 +503,7 @@ namespace TestProject1
             innleggController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await innleggController.HentEnInnlegg(It.IsAny<int>()) as NotFoundObjectResult;
+            var resultat = await innleggController.HentEtInnlegg(It.IsAny<int>()) as NotFoundObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
@@ -511,9 +511,9 @@ namespace TestProject1
         }
 
         [Fact]
-        public async Task HentEnInnleggIkkeLoggetInn()
+        public async Task HentEtInnleggIkkeLoggetInn()
         {
-            mockRep.Setup(k => k.HentEnInnlegg(It.IsAny<int>())).ReturnsAsync(() => null);
+            mockRep.Setup(k => k.HentEtInnlegg(It.IsAny<int>())).ReturnsAsync(() => null);
 
             var innleggController = new InnleggController(mockRep.Object, mockLog.Object);
 
@@ -522,7 +522,7 @@ namespace TestProject1
             innleggController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await innleggController.HentEnInnlegg(It.IsAny<int>()) as UnauthorizedObjectResult;
+            var resultat = await innleggController.HentEtInnlegg(It.IsAny<int>()) as UnauthorizedObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
@@ -1108,7 +1108,7 @@ namespace TestProject1
         [Fact]
         public async Task LoggInnOK()
         {
-            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(true);
+            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(0);
 
             var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
 
@@ -1127,9 +1127,9 @@ namespace TestProject1
         }
 
         [Fact]
-        public async Task LoggInnFeilPassordEllerBruker()
+        public async Task LoggInnFeilBruker()
         {
-            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(false);
+            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(1);
 
             var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
 
@@ -1138,17 +1138,56 @@ namespace TestProject1
             brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as OkObjectResult;
+            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as BadRequestObjectResult;
 
             // Assert 
-            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.False((bool)resultat.Value);
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Bruker ble ikke funnet.", resultat.Value);
         }
+
+        [Fact]
+        public async Task LoggInnFeilPassord()
+        {
+            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(2);
+
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            // Act
+            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            // Assert 
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil passord.", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LoggInnFeilInnlogging()
+        {
+            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(3);
+
+            var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            // Act
+            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as BadRequestObjectResult;
+
+            // Assert 
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Innloggingen feilet for bruker", resultat.Value);
+        }
+
 
         [Fact]
         public async Task LoggInnInputFeil()
         {
-            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(true);
+            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(0);
 
             var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
 
@@ -1232,7 +1271,7 @@ namespace TestProject1
         [Fact]
         public async Task LagBrukerInputFeil()
         {
-            mockRep2.Setup(k => k.LoggInn(It.IsAny<Bruker>())).ReturnsAsync(true);
+            mockRep2.Setup(k => k.LagBruker(It.IsAny<Bruker>())).ReturnsAsync(0);
 
             var brukerController = new BrukerController(mockRep2.Object, mockLog2.Object);
 
@@ -1243,7 +1282,7 @@ namespace TestProject1
             brukerController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             // Act
-            var resultat = await brukerController.LoggInn(It.IsAny<Bruker>()) as BadRequestObjectResult;
+            var resultat = await brukerController.LagBruker(It.IsAny<Bruker>()) as BadRequestObjectResult;
 
             // Assert 
             Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);

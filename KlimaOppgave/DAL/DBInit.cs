@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 namespace KlimaOppgave.DAL
 {
@@ -25,6 +26,7 @@ namespace KlimaOppgave.DAL
             byte[] hash = BrukerController.LagHash(passord, salt);
             bruker.Passord = hash;
             bruker.Salt = salt;
+
             db.Brukere.Add(bruker);
 
             db.SaveChanges();

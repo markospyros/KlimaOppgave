@@ -60,24 +60,20 @@ namespace KlimaOppgave.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> HentEnInnlegg(int id)
+        public async Task<ActionResult> HentEtInnlegg(int id)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 return Unauthorized("Ikke logget inn");
             }
-            if (ModelState.IsValid)
+            Innlegg innlegg = await _db.HentEtInnlegg(id);
+            if (innlegg == null)
             {
-                Innlegg innlegg = await _db.HentEnInnlegg(id);
-                if (innlegg == null)
-                {
-                    _log.LogInformation("Fant ikke Innlegg");
-                    return NotFound("Fant ikke Innlegg");
-                }
-                return Ok(innlegg);
+                _log.LogInformation("Fant ikke Innlegg");
+                return NotFound("Fant ikke Innlegg");
             }
-            _log.LogInformation("Feil i inputvalidering");
-            return BadRequest("Feil i inputvalidering på server");
+            return Ok(innlegg);
+
         }
 
         [HttpDelete("{id}")]

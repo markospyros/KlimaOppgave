@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const SharedLayout = (props) => {
+  // Felles page for helle prosjektet
   return (
     <>
       <Navbar brukernavn={props.sessionBrukernavn} />

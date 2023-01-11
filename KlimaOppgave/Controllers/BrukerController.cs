@@ -74,6 +74,7 @@ namespace KlimaOppgave.Controllers
                     return BadRequest("Bruker kunne ikke lagres");
                 }
             }
+
             _log.LogInformation("Feil i inputvalidering");
             return BadRequest("Feil i inputvalidering på server");
         }
@@ -83,15 +84,31 @@ namespace KlimaOppgave.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool returnOK = await _db.LoggInn(bruker);
-                if (!returnOK)
+                int returnTall = await _db.LoggInn(bruker);
+                if (returnTall == 0)
+                {
+                    HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
+                    return Ok(true);
+                }
+                if (returnTall == 1)
+                {
+                    _log.LogInformation("Bruker ble ikke funnet.");
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return BadRequest("Bruker ble ikke funnet.");
+                }
+                if (returnTall == 2)
+                {
+                    _log.LogInformation("Feil passord.");
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return BadRequest("Feil passord.");
+                }
+                if (returnTall == 3)
                 {
                     _log.LogInformation("Innloggingen feilet for bruker");
                     HttpContext.Session.SetString(_loggetInn, "");
-                    return Ok(false);
+                    return BadRequest("Innloggingen feilet for bruker");
                 }
-                HttpContext.Session.SetString(_loggetInn, bruker.Brukernavn);
-                return Ok(true);
+                
             }
             _log.LogInformation("Feil i inputvalidering");
             return BadRequest("Feil i inputvalidering på server");

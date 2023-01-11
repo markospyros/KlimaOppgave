@@ -61,8 +61,6 @@ namespace KlimaOppgave.DAL
                     _db.Brukere.Add(nyBruker);
                     await _db.SaveChangesAsync();
 
-                    // _httpContextAccessor.HttpContext.Session.SetInt32(_loggetInn, 1);
-
                     return 0;
                 }
 
@@ -76,7 +74,7 @@ namespace KlimaOppgave.DAL
         }
 
 
-        public async Task<bool> LoggInn(Bruker bruker)
+        public async Task<int> LoggInn(Bruker bruker)
         {
             try
             {
@@ -84,21 +82,21 @@ namespace KlimaOppgave.DAL
                 // sjekk passordet
                 if (funnetBruker == null)
                 {
-                    return false;
+                    return 1;
                 }
 
                 byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
                 bool ok = hash.SequenceEqual(funnetBruker.Passord);
                 if (ok)
                 {
-                    return true;
+                    return 0;
                 }
-                return false;
+                return 2;
             }
             catch (Exception e)
             {
                 _log.LogInformation(e.Message);
-                return false;
+                return 3;
             }
         }
     }

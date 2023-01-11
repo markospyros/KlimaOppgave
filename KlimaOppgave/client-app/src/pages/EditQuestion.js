@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Form from "../components/Form";
 
 const EditQuestion = ({ sessionBrukernavn }) => {
+  //Henter id fra PostComponent
   let { id } = useParams();
 
   const [post, setPost] = useState();
@@ -21,8 +22,10 @@ const EditQuestion = ({ sessionBrukernavn }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Ved hjelp av id vi hentet fra PostComponent
+    // bruker vi den til å hente et enkelt innlegg
     axios
-      .get(`/henteninnlegg/${id}`)
+      .get(`/HentEtInnlegg/${id}`)
       .then((res) => {
         setPost(res.data);
         setTittel(res.data.tittel);
@@ -88,6 +91,7 @@ const EditQuestion = ({ sessionBrukernavn }) => {
         brukernavn: sessionBrukernavn,
       };
 
+      // sender endreinnlegg til server
       axios.post("/endreinnlegg", endretInnlegg);
 
       setButtonStatus(

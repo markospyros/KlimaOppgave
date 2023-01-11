@@ -50,7 +50,7 @@ const ChangeAnswerModal = (props) => {
         onHide={props.closeModalChange}
         animation={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Endre svar</Modal.Title>
         </Modal.Header>
         <Modal.Body>

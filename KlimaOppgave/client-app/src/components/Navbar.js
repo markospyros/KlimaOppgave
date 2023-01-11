@@ -9,7 +9,6 @@ const Navbar = (props) => {
   const loggut = () => {
     axios.get("/loggut").then(navigate("/login"));
   };
-  console.log(props.brukernavn);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">

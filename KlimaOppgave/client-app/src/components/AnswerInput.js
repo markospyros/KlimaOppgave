@@ -58,6 +58,8 @@ const AnswerInput = (props) => {
         .then((response) => {
           svar.svarId = response.data.svarId;
           svar.dato = response.data.dato;
+          //Henter addAnswer-funksjonen fra hovedsiden,
+          // som oppdaterer state til post fra hovedsiden
           props.addAnswer(svar, svar.innleggId);
           setSvarText("");
         })

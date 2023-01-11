@@ -8,6 +8,6 @@ namespace KlimaOppgave.DAL
     {
         Task<int> LagBruker(Bruker bruker);
 
-        Task<bool> LoggInn(Bruker bruker);
+        Task<int> LoggInn(Bruker bruker);
     }
 }

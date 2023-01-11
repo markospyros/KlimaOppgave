@@ -10,7 +10,7 @@ namespace KlimaOppgave.DAL
 
         Task<List<Innlegg>> HentInnlegg();
 
-        Task<Innlegg> HentEnInnlegg(int id);
+        Task<Innlegg> HentEtInnlegg(int id);
 
         Task<bool> SlettInnlegg(int id);
 

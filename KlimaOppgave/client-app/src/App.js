@@ -11,6 +11,9 @@ import SharedLayout from "./pages/SharedLayout";
 const App = () => {
   const [sessionBrukernavn, setSessionBrukernavn] = useState(null);
 
+  // Sessionbrukernavn er et brukernavn som blir sendt fra sessionen
+  // Slik er det mulig for oss å se hvem vi er logget inn som
+  // For å hente brukernavnet så kaller vi på getsessiondata fra server
   axios
     .get("/getsessiondata")
     .then((res) => {
